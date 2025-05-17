@@ -1,0 +1,111 @@
+﻿Imports System.IO
+Imports System.Text.Json
+
+Public Class 界面控制_编码队列
+
+    Public Shared Sub 开始任务()
+        For Each item As ListViewItem In Form1.ListView1.SelectedItems
+            Dim i = item.Index
+            Select Case 编码任务.队列(i).状态
+                Case 编码任务.编码状态.未处理, 编码任务.编码状态.已停止, 编码任务.编码状态.错误
+                    编码任务.队列(i).开始()
+            End Select
+        Next
+    End Sub
+
+    Public Shared Sub 暂停任务()
+        For Each item As ListViewItem In Form1.ListView1.SelectedItems
+            Dim i = item.Index
+            Select Case 编码任务.队列(i).状态
+                Case 编码任务.编码状态.正在处理
+                    编码任务.队列(i).暂停()
+            End Select
+        Next
+    End Sub
+
+    Public Shared Sub 恢复任务()
+        For Each item As ListViewItem In Form1.ListView1.SelectedItems
+            Dim i = item.Index
+            Select Case 编码任务.队列(i).状态
+                Case 编码任务.编码状态.已暂停
+                    编码任务.队列(i).恢复()
+            End Select
+        Next
+    End Sub
+
+    Public Shared Sub 停止任务()
+        For Each item As ListViewItem In Form1.ListView1.SelectedItems
+            Dim i = item.Index
+            Select Case 编码任务.队列(i).状态
+                Case 编码任务.编码状态.正在处理, 编码任务.编码状态.已暂停
+                    编码任务.队列(i).停止()
+            End Select
+        Next
+    End Sub
+
+    Public Shared Sub 移除任务()
+        Dim indices As New List(Of Integer)
+        For Each item As ListViewItem In Form1.ListView1.SelectedItems
+            Dim i = item.Index
+            Select Case 编码任务.队列(i).状态
+                Case 编码任务.编码状态.已完成, 编码任务.编码状态.未处理, 编码任务.编码状态.错误, 编码任务.编码状态.已停止
+                    indices.Add(i)
+            End Select
+        Next
+        indices.Sort()
+        indices.Reverse()
+        For Each i In indices
+            编码任务.队列(i).清除占用()
+            编码任务.队列.RemoveAt(i)
+        Next
+    End Sub
+
+    Public Shared Sub 重置任务()
+        For Each item As ListViewItem In Form1.ListView1.SelectedItems
+            Dim i = item.Index
+            Select Case 编码任务.队列(i).状态
+                Case 编码任务.编码状态.已完成, 编码任务.编码状态.错误
+                    编码任务.队列(i).状态 = 编码任务.编码状态.未处理
+                    编码任务.队列(i).在界面上刷新数据()
+            End Select
+        Next
+    End Sub
+
+    Public Shared Sub 全选任务()
+        For Each item As ListViewItem In Form1.ListView1.Items
+            item.Selected = True
+        Next
+    End Sub
+
+    Public Shared Sub 定位输出()
+        If Form1.ListView1.SelectedItems.Count <> 1 Then Exit Sub
+        Dim 输出文件 = 编码任务.队列(Form1.ListView1.SelectedItems(0).Index).输出文件
+        If String.IsNullOrEmpty(输出文件) OrElse Not IO.File.Exists(输出文件) Then Exit Sub
+        Process.Start("explorer.exe", "/select,""" & 输出文件 & """")
+    End Sub
+
+    Public Shared Sub 重新配置()
+        If Form1.ListView1.SelectedItems.Count <> 1 Then Exit Sub
+        If MsgBox("确定将此任务的配置数据用于覆盖几个选项卡中的设置？此操作不可逆！", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+            预设管理.显示预设(编码任务.队列(Form1.ListView1.SelectedItems(0).Index).预设数据)
+        End If
+    End Sub
+
+    Public Shared Sub 导出配置()
+        If Form1.ListView1.SelectedItems.Count <> 1 Then Exit Sub
+        Dim d As New SaveFileDialog With {.Filter = "Json|*.json"}
+        d.ShowDialog(Form1)
+        If d.FileName = "" Then Exit Sub
+        File.WriteAllText(d.FileName, JsonSerializer.Serialize(编码任务.队列(Form1.ListView1.SelectedItems(0).Index).预设数据, JsonSO))
+    End Sub
+
+    Public Shared Sub 复制命令行()
+        If Form1.ListView1.SelectedItems.Count <> 1 Then Exit Sub
+        If 编码任务.队列(Form1.ListView1.SelectedItems(0).Index).命令行 = "" Then
+            Clipboard.SetText(预设管理.将预设数据转换为命令行(编码任务.队列(Form1.ListView1.SelectedItems(0).Index).预设数据, 编码任务.队列(Form1.ListView1.SelectedItems(0).Index).输入文件, 编码任务.队列(Form1.ListView1.SelectedItems(0).Index).输出文件))
+        Else
+            Clipboard.SetText(编码任务.队列(Form1.ListView1.SelectedItems(0).Index).命令行)
+        End If
+    End Sub
+
+End Class
