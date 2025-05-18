@@ -33,7 +33,6 @@ Public Class 界面控制
         AddHandler Form1.UiCheckBox6.CheckedChanged, AddressOf 界面控制_视频参数.视频编码器参数开关事件
         AddHandler Form1.UiComboBox2.SelectedIndexChanged, AddressOf 界面控制_视频参数.视频编码类别改动事件
         AddHandler Form1.UiComboBox3.SelectedIndexChanged, AddressOf 界面控制_视频参数.视频具体编码改动事件
-
         AddHandler Form1.UiCheckBox3.Click, AddressOf 界面控制_视频参数.视频分辨率参数开关按下事件
         AddHandler Form1.UiComboBox5.TextChanged, AddressOf 界面控制_视频参数.视频分辨率文本框文本变动事件
         AddHandler Form1.UiCheckBox2.Click, AddressOf 界面控制_视频参数.视频分辨率自动计算开关按下事件
@@ -44,7 +43,15 @@ Public Class 界面控制
 
 
 
+        AddHandler Form1.UiCheckBox5.Click, AddressOf 界面控制_视频参数.视频帧速率参数开关按下事件
+        AddHandler Form1.UiComboBox4.TextChanged, AddressOf 界面控制_视频参数.视频帧速率改动事件
+        AddHandler Form1.UiCheckBox4.Click, AddressOf 界面控制_视频参数.视频帧速率动态帧率开关按下事件
 
+
+
+
+
+        AddHandler Form1.UiCheckBox9.Click, AddressOf 界面控制_视频参数.视频画面视觉参数开关按下事件
         AddHandler Form1.UiComboBox6.SelectedIndexChanged, AddressOf 界面控制_视频参数.视频比特率控制方式改动事件
         AddHandler Form1.UiComboBox8.SelectedIndexChanged, AddressOf 界面控制_视频参数.视频画面规格改动事件
         AddHandler Form1.UiComboBox9.SelectedIndexChanged, AddressOf 界面控制_视频参数.视频像素格式改动事件

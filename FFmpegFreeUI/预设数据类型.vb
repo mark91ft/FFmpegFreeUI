@@ -21,9 +21,10 @@ Public Class 预设数据类型
     Public Property 视频参数_比特率_控制方式 As String = ""
     Public Property 视频参数_比特率_基础 As String = ""
     Public Property 视频参数_比特率_质量值 As String = ""
-    Public Property 视频参数_比特率_CBR最低值 As String = ""
-    Public Property 视频参数_比特率_CBR最高值 As String = ""
-    Public Property 视频参数_比特率_CBR缓冲区 As String = ""
+    Public Property 视频参数_比特率_HQ前瞻分析帧数 As String = ""
+    Public Property 视频参数_比特率_最低值 As String = ""
+    Public Property 视频参数_比特率_最高值 As String = ""
+    Public Property 视频参数_比特率_缓冲区 As String = ""
     Public Property 视频参数_启用快速剪辑参数 As Boolean = False
     Public Property 视频参数_快速剪辑_入点 As String = ""
     Public Property 视频参数_快速剪辑_出点 As String = ""

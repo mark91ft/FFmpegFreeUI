@@ -152,6 +152,10 @@ Partial Class Form1
         UiTextBox7 = New Sunny.UI.UITextBox()
         Label46 = New Label()
         UiTextBox6 = New Sunny.UI.UITextBox()
+        Panel9 = New Panel()
+        Label99 = New Label()
+        UiTextBox13 = New Sunny.UI.UITextBox()
+        Label101 = New Label()
         Panel20 = New Panel()
         Label44 = New Label()
         UiTextBox4 = New Sunny.UI.UITextBox()
@@ -313,6 +317,7 @@ Partial Class Form1
         Panel21.SuspendLayout()
         Panel42.SuspendLayout()
         Panel22.SuspendLayout()
+        Panel9.SuspendLayout()
         Panel20.SuspendLayout()
         Panel19.SuspendLayout()
         Panel18.SuspendLayout()
@@ -422,7 +427,7 @@ Partial Class Form1
         UiPanel1.RectSides = ToolStripStatusLabelBorderSides.None
         UiPanel1.Size = New Size(733, 50)
         UiPanel1.TabIndex = 0
-        UiPanel1.Text = "将 ffmpeg.exe 放置于程序相同目录下才可进行转码"
+        UiPanel1.Text = "将 ffmpeg.exe 与此程序放置在相同目录下才可进行转码"
         UiPanel1.TextAlignment = ContentAlignment.MiddleCenter
         ' 
         ' Label81
@@ -455,7 +460,7 @@ Partial Class Form1
         Label79.Name = "Label79"
         Label79.Size = New Size(1133, 350)
         Label79.TabIndex = 0
-        Label79.Text = "FFmpegFreeUI v0.1"
+        Label79.Text = "FFmpegFreeUI v0.2"
         Label79.TextAlign = ContentAlignment.BottomCenter
         ' 
         ' TabPage编码队列
@@ -1625,6 +1630,7 @@ Partial Class Form1
         ' 
         ' UiRadioButton2
         ' 
+        UiRadioButton2.Checked = True
         UiRadioButton2.Dock = DockStyle.Top
         UiRadioButton2.Font = New Font("微软雅黑", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(134))
         UiRadioButton2.ForeColor = Color.Silver
@@ -1698,6 +1704,7 @@ Partial Class Form1
         Panel12.Controls.Add(Panel21)
         Panel12.Controls.Add(Panel42)
         Panel12.Controls.Add(Panel22)
+        Panel12.Controls.Add(Panel9)
         Panel12.Controls.Add(Panel20)
         Panel12.Controls.Add(Panel19)
         Panel12.Controls.Add(Panel18)
@@ -1720,7 +1727,7 @@ Partial Class Form1
         Panel29.Controls.Add(UiTextBox10)
         Panel29.Controls.Add(UiCheckBox10)
         Panel29.Dock = DockStyle.Top
-        Panel29.Location = New Point(30, 639)
+        Panel29.Location = New Point(30, 684)
         Panel29.Name = "Panel29"
         Panel29.Padding = New Padding(5, 0, 0, 0)
         Panel29.Size = New Size(1073, 35)
@@ -1775,7 +1782,7 @@ Partial Class Form1
         ' 
         Panel30.Controls.Add(Label57)
         Panel30.Dock = DockStyle.Top
-        Panel30.Location = New Point(30, 617)
+        Panel30.Location = New Point(30, 662)
         Panel30.Name = "Panel30"
         Panel30.Padding = New Padding(0, 10, 0, 10)
         Panel30.Size = New Size(1073, 22)
@@ -1798,7 +1805,7 @@ Partial Class Form1
         Panel26.Controls.Add(UiComboBox11)
         Panel26.Controls.Add(UiCheckBox7)
         Panel26.Dock = DockStyle.Top
-        Panel26.Location = New Point(30, 582)
+        Panel26.Location = New Point(30, 627)
         Panel26.Name = "Panel26"
         Panel26.Padding = New Padding(5, 0, 0, 0)
         Panel26.Size = New Size(1073, 35)
@@ -1908,7 +1915,7 @@ Partial Class Form1
         ' 
         Panel25.Controls.Add(Label53)
         Panel25.Dock = DockStyle.Top
-        Panel25.Location = New Point(30, 560)
+        Panel25.Location = New Point(30, 605)
         Panel25.Name = "Panel25"
         Panel25.Padding = New Padding(0, 10, 0, 10)
         Panel25.Size = New Size(1073, 22)
@@ -1927,7 +1934,7 @@ Partial Class Form1
         ' 
         Panel27.Controls.Add(Label52)
         Panel27.Dock = DockStyle.Top
-        Panel27.Location = New Point(30, 525)
+        Panel27.Location = New Point(30, 570)
         Panel27.Name = "Panel27"
         Panel27.Padding = New Padding(205, 0, 0, 0)
         Panel27.Size = New Size(1073, 35)
@@ -1951,7 +1958,7 @@ Partial Class Form1
         Panel24.Controls.Add(UiComboBox8)
         Panel24.Controls.Add(UiCheckBox9)
         Panel24.Dock = DockStyle.Top
-        Panel24.Location = New Point(30, 490)
+        Panel24.Location = New Point(30, 535)
         Panel24.Name = "Panel24"
         Panel24.Padding = New Padding(5, 0, 0, 0)
         Panel24.Size = New Size(1073, 35)
@@ -1988,8 +1995,6 @@ Partial Class Form1
         UiComboBox9.ScrollBarColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiComboBox9.ScrollBarHandleWidth = 10
         UiComboBox9.ScrollBarStyleInherited = False
-        UiComboBox9.ShowClearButton = True
-        UiComboBox9.ShowFilter = True
         UiComboBox9.Size = New Size(410, 35)
         UiComboBox9.Style = Sunny.UI.UIStyle.Custom
         UiComboBox9.SymbolSize = 24
@@ -2022,7 +2027,7 @@ Partial Class Form1
         UiComboBox8.ItemHeight = 30
         UiComboBox8.ItemHoverColor = Color.FromArgb(CByte(56), CByte(56), CByte(56))
         UiComboBox8.ItemRectColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiComboBox8.Items.AddRange(New Object() {"", "baseline", "main", "main10", "high", "high10", "high422", "high444", "Professional", "rext", "MainStillPicture"})
+        UiComboBox8.Items.AddRange(New Object() {"baseline", "main", "main10", "high", "high10", "high422", "high444", "Professional", "rext", "MainStillPicture"})
         UiComboBox8.ItemSelectBackColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
         UiComboBox8.ItemSelectForeColor = Color.Silver
         UiComboBox8.Location = New Point(205, 0)
@@ -2059,7 +2064,7 @@ Partial Class Form1
         ' 
         Panel23.Controls.Add(Label50)
         Panel23.Dock = DockStyle.Top
-        Panel23.Location = New Point(30, 468)
+        Panel23.Location = New Point(30, 513)
         Panel23.Name = "Panel23"
         Panel23.Padding = New Padding(0, 10, 0, 10)
         Panel23.Size = New Size(1073, 22)
@@ -2082,7 +2087,7 @@ Partial Class Form1
         Panel21.Controls.Add(UiTextBox5)
         Panel21.Controls.Add(UiCheckBox17)
         Panel21.Dock = DockStyle.Top
-        Panel21.Location = New Point(30, 433)
+        Panel21.Location = New Point(30, 478)
         Panel21.Name = "Panel21"
         Panel21.Padding = New Padding(5, 0, 0, 0)
         Panel21.Size = New Size(1073, 35)
@@ -2188,7 +2193,7 @@ Partial Class Form1
         ' 
         Panel42.Controls.Add(Label45)
         Panel42.Dock = DockStyle.Top
-        Panel42.Location = New Point(30, 411)
+        Panel42.Location = New Point(30, 456)
         Panel42.Name = "Panel42"
         Panel42.Padding = New Padding(0, 10, 0, 10)
         Panel42.Size = New Size(1073, 22)
@@ -2212,7 +2217,7 @@ Partial Class Form1
         Panel22.Controls.Add(Label46)
         Panel22.Controls.Add(UiTextBox6)
         Panel22.Dock = DockStyle.Top
-        Panel22.Location = New Point(30, 366)
+        Panel22.Location = New Point(30, 411)
         Panel22.Name = "Panel22"
         Panel22.Padding = New Padding(205, 10, 0, 0)
         Panel22.Size = New Size(1073, 45)
@@ -2258,7 +2263,7 @@ Partial Class Form1
         UiTextBox8.Size = New Size(200, 35)
         UiTextBox8.TabIndex = 75
         UiTextBox8.TextAlignment = ContentAlignment.MiddleLeft
-        UiTextBox8.Watermark = "CBR 缓冲区大小"
+        UiTextBox8.Watermark = "缓冲区大小"
         UiTextBox8.WatermarkActiveColor = Color.DimGray
         UiTextBox8.WatermarkColor = Color.DimGray
         ' 
@@ -2297,7 +2302,7 @@ Partial Class Form1
         UiTextBox7.Size = New Size(200, 35)
         UiTextBox7.TabIndex = 73
         UiTextBox7.TextAlignment = ContentAlignment.MiddleLeft
-        UiTextBox7.Watermark = "CBR 最高比特率"
+        UiTextBox7.Watermark = "最高比特率"
         UiTextBox7.WatermarkActiveColor = Color.DimGray
         UiTextBox7.WatermarkColor = Color.DimGray
         ' 
@@ -2336,9 +2341,75 @@ Partial Class Form1
         UiTextBox6.Size = New Size(200, 35)
         UiTextBox6.TabIndex = 71
         UiTextBox6.TextAlignment = ContentAlignment.MiddleLeft
-        UiTextBox6.Watermark = "CBR 最低比特率"
+        UiTextBox6.Watermark = "最低比特率"
         UiTextBox6.WatermarkActiveColor = Color.DimGray
         UiTextBox6.WatermarkColor = Color.DimGray
+        ' 
+        ' Panel9
+        ' 
+        Panel9.Controls.Add(Label99)
+        Panel9.Controls.Add(UiTextBox13)
+        Panel9.Controls.Add(Label101)
+        Panel9.Dock = DockStyle.Top
+        Panel9.Location = New Point(30, 366)
+        Panel9.Name = "Panel9"
+        Panel9.Padding = New Padding(205, 10, 0, 0)
+        Panel9.Size = New Size(1073, 45)
+        Panel9.TabIndex = 26
+        Panel9.Visible = False
+        ' 
+        ' Label99
+        ' 
+        Label99.Dock = DockStyle.Fill
+        Label99.ForeColor = Color.Gray
+        Label99.Location = New Point(615, 10)
+        Label99.Name = "Label99"
+        Label99.Padding = New Padding(10, 0, 0, 0)
+        Label99.Size = New Size(458, 35)
+        Label99.TabIndex = 73
+        Label99.Text = "HQ 不支持设置比特率；AMD 没有这个参数"
+        Label99.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' UiTextBox13
+        ' 
+        UiTextBox13.Dock = DockStyle.Left
+        UiTextBox13.FillColor = Color.FromArgb(CByte(36), CByte(36), CByte(36))
+        UiTextBox13.FillColor2 = Color.FromArgb(CByte(36), CByte(36), CByte(36))
+        UiTextBox13.FillDisableColor = Color.FromArgb(CByte(36), CByte(36), CByte(36))
+        UiTextBox13.FillReadOnlyColor = Color.FromArgb(CByte(36), CByte(36), CByte(36))
+        UiTextBox13.Font = New Font("微软雅黑", 10F)
+        UiTextBox13.ForeColor = Color.DarkGray
+        UiTextBox13.ForeDisableColor = Color.DarkGray
+        UiTextBox13.ForeReadOnlyColor = Color.DarkGray
+        UiTextBox13.Location = New Point(415, 10)
+        UiTextBox13.Margin = New Padding(4, 5, 4, 5)
+        UiTextBox13.MinimumSize = New Size(1, 16)
+        UiTextBox13.Name = "UiTextBox13"
+        UiTextBox13.Padding = New Padding(5)
+        UiTextBox13.RadiusSides = Sunny.UI.UICornerRadiusSides.None
+        UiTextBox13.RectColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
+        UiTextBox13.RectDisableColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
+        UiTextBox13.RectReadOnlyColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
+        UiTextBox13.ScrollBarBackColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiTextBox13.ScrollBarColor = Color.DimGray
+        UiTextBox13.ScrollBarStyleInherited = False
+        UiTextBox13.ShowText = False
+        UiTextBox13.Size = New Size(200, 35)
+        UiTextBox13.TabIndex = 71
+        UiTextBox13.TextAlignment = ContentAlignment.MiddleLeft
+        UiTextBox13.Watermark = "推荐 20~40"
+        UiTextBox13.WatermarkActiveColor = Color.DimGray
+        UiTextBox13.WatermarkColor = Color.DimGray
+        ' 
+        ' Label101
+        ' 
+        Label101.Dock = DockStyle.Left
+        Label101.Location = New Point(205, 10)
+        Label101.Name = "Label101"
+        Label101.Size = New Size(210, 35)
+        Label101.TabIndex = 67
+        Label101.Text = "HQ 专用：前瞻分析帧数"
+        Label101.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' Panel20
         ' 
@@ -2362,7 +2433,7 @@ Partial Class Form1
         Label44.Padding = New Padding(10, 0, 0, 0)
         Label44.Size = New Size(458, 35)
         Label44.TabIndex = 72
-        Label44.Text = "使用此方式时，基础比特率可不写"
+        Label44.Text = "使用这些方式时，基础比特率可不写"
         Label44.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' UiTextBox4
@@ -2403,7 +2474,7 @@ Partial Class Form1
         Label41.Name = "Label41"
         Label41.Size = New Size(210, 35)
         Label41.TabIndex = 67
-        Label41.Text = "CRF \ CQP 质量"
+        Label41.Text = "VBR \ CRF \ CQP 质量"
         Label41.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' Panel19
@@ -2487,7 +2558,7 @@ Partial Class Form1
         UiComboBox6.ItemHeight = 30
         UiComboBox6.ItemHoverColor = Color.FromArgb(CByte(56), CByte(56), CByte(56))
         UiComboBox6.ItemRectColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiComboBox6.Items.AddRange(New Object() {"恒定质量 CRF - 画面稳定，最大节约比特率，存储首选", "恒定量化 CQP - 只求最稳，质量不如 CRF", "平均码率 ABR - 折中方案，在一定范围内波动", "二次编码 TPE - 花费时间节省比特率", "恒定速率 CBR - 流媒体常用，可配置上下限和缓冲区"})
+        UiComboBox6.Items.AddRange(New Object() {"动态码率 VBR - 存储首选，硬件加速首选", "动态码率 VBR HQ - 硬件加速专用，极致质量", "恒定质量 CRF - 存储首选，软件编码首选", "恒定量化 CQP - 不推荐，主用于研究和特定场景", "平均码率 ABR - 折中方案，在一定范围内波动", "二次编码 TPE - 花费时间节省比特率", "恒定速率 CBR - 流媒体常用，不适合存储"})
         UiComboBox6.ItemSelectBackColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
         UiComboBox6.ItemSelectForeColor = Color.Silver
         UiComboBox6.Location = New Point(205, 0)
@@ -3313,6 +3384,7 @@ Partial Class Form1
         ' 
         UiComboBox15.DataSource = Nothing
         UiComboBox15.Dock = DockStyle.Left
+        UiComboBox15.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList
         UiComboBox15.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiComboBox15.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiComboBox15.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
@@ -3391,6 +3463,7 @@ Partial Class Form1
         ' 
         UiComboBox14.DataSource = Nothing
         UiComboBox14.Dock = DockStyle.Left
+        UiComboBox14.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList
         UiComboBox14.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiComboBox14.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiComboBox14.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
@@ -3464,7 +3537,6 @@ Partial Class Form1
         Panel35.Padding = New Padding(205, 10, 0, 0)
         Panel35.Size = New Size(1073, 45)
         Panel35.TabIndex = 27
-        Panel35.Visible = False
         ' 
         ' Label63
         ' 
@@ -3590,7 +3662,7 @@ Partial Class Form1
         UiComboBox13.ItemHeight = 30
         UiComboBox13.ItemHoverColor = Color.FromArgb(CByte(56), CByte(56), CByte(56))
         UiComboBox13.ItemRectColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiComboBox13.Items.AddRange(New Object() {"恒定速率 CBR - 适用对深度细节无要求的有损编码", "恒定质量 VBR - 根据质量动态调整比特率", "FLAC 无损专用 - 设置压缩级别 0~12"})
+        UiComboBox13.Items.AddRange(New Object() {"恒定速率 CBR - 大多数情况下这已足够", "恒定质量 VBR - 根据质量动态调整比特率", "FLAC 无损专用 - 设置压缩级别 0~12 越大越高"})
         UiComboBox13.ItemSelectBackColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
         UiComboBox13.ItemSelectForeColor = Color.Silver
         UiComboBox13.Location = New Point(205, 0)
@@ -3669,7 +3741,7 @@ Partial Class Form1
         UiComboBox10.ItemHeight = 30
         UiComboBox10.ItemHoverColor = Color.FromArgb(CByte(56), CByte(56), CByte(56))
         UiComboBox10.ItemRectColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiComboBox10.Items.AddRange(New Object() {"", "复制流", "AAC", "LAME MP3", "FLAC", "ALAC", "WAV 16bit", "WAV 24bit", "WAV 32bit Float", "Dolby Digital AC3", "DTS Coherent Acoustics", "Opus", "Vorbis", "True Audio", "禁用"})
+        UiComboBox10.Items.AddRange(New Object() {"复制流", "AAC", "LAME MP3", "FLAC", "ALAC", "WAV 16bit", "WAV 24bit", "WAV 32bit Float", "Dolby Digital AC3", "DTS Coherent Acoustics", "Opus", "Vorbis", "True Audio", "禁用"})
         UiComboBox10.ItemSelectBackColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
         UiComboBox10.ItemSelectForeColor = Color.Silver
         UiComboBox10.Location = New Point(205, 0)
@@ -4014,6 +4086,7 @@ Partial Class Form1
         ' 
         UiComboBox20.DataSource = Nothing
         UiComboBox20.Dock = DockStyle.Left
+        UiComboBox20.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList
         UiComboBox20.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiComboBox20.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiComboBox20.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
@@ -4548,6 +4621,7 @@ Partial Class Form1
         Panel21.ResumeLayout(False)
         Panel42.ResumeLayout(False)
         Panel22.ResumeLayout(False)
+        Panel9.ResumeLayout(False)
         Panel20.ResumeLayout(False)
         Panel19.ResumeLayout(False)
         Panel18.ResumeLayout(False)
@@ -4855,5 +4929,9 @@ Partial Class Form1
     Friend WithEvents Label98 As Label
     Friend WithEvents UiButton哔哩哔哩 As Sunny.UI.UIButton
     Friend WithEvents Label86 As Label
+    Friend WithEvents Panel9 As Panel
+    Friend WithEvents UiTextBox13 As Sunny.UI.UITextBox
+    Friend WithEvents Label101 As Label
+    Friend WithEvents Label99 As Label
 
 End Class

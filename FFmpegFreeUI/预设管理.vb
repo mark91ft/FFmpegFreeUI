@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Runtime.ConstrainedExecution
 Imports System.Runtime.Intrinsics
 Imports System.Text.Json
 Imports Sunny.UI
@@ -40,23 +41,35 @@ Public Class 预设管理
         Form1.UiComboBox4.Text = a.视频参数_帧速率
         Form1.UiCheckBox4.Checked = a.视频参数_帧速率_自动丢弃多余帧
         Form1.UiCheckBox8.Checked = a.视频参数_启用比特率参数
+        '动态码率 VBR - 存储首选，硬件加速首选
+        '动态码率 VBR HQ - 硬件加速专用，极致质量
+        '恒定质量 CRF - 存储首选，软件编码首选
+        '恒定量化 CQP - 不推荐，主用于研究和特定场景
+        '平均码率 ABR - 折中方案，在一定范围内波动
+        '二次编码 TPE - 花费时间节省比特率
+        '恒定速率 CBR - 流媒体常用，不适合存储
         Select Case a.视频参数_比特率_控制方式
-            Case "CRF"
+            Case "VBR"
                 Form1.UiComboBox6.SelectedIndex = 0
-            Case "CQP"
+            Case "VBR HQ"
                 Form1.UiComboBox6.SelectedIndex = 1
-            Case "ABR"
+            Case "CRF"
                 Form1.UiComboBox6.SelectedIndex = 2
-            Case "TPE"
+            Case "CQP"
                 Form1.UiComboBox6.SelectedIndex = 3
-            Case "CBR"
+            Case "ABR"
                 Form1.UiComboBox6.SelectedIndex = 4
+            Case "TPE"
+                Form1.UiComboBox6.SelectedIndex = 5
+            Case "CBR"
+                Form1.UiComboBox6.SelectedIndex = 6
         End Select
         Form1.UiTextBox3.Text = a.视频参数_比特率_基础
         Form1.UiTextBox4.Text = a.视频参数_比特率_质量值
-        Form1.UiTextBox6.Text = a.视频参数_比特率_CBR最低值
-        Form1.UiTextBox7.Text = a.视频参数_比特率_CBR最高值
-        Form1.UiTextBox8.Text = a.视频参数_比特率_CBR缓冲区
+        Form1.UiTextBox13.Text = a.视频参数_比特率_HQ前瞻分析帧数
+        Form1.UiTextBox6.Text = a.视频参数_比特率_最低值
+        Form1.UiTextBox7.Text = a.视频参数_比特率_最高值
+        Form1.UiTextBox8.Text = a.视频参数_比特率_缓冲区
         Form1.UiCheckBox17.Checked = a.视频参数_启用快速剪辑参数
         Form1.UiTextBox5.Text = a.视频参数_快速剪辑_入点
         Form1.UiTextBox18.Text = a.视频参数_快速剪辑_出点
@@ -129,16 +142,26 @@ Public Class 预设管理
         a.视频参数_帧速率 = Form1.UiComboBox4.Text
         a.视频参数_帧速率_自动丢弃多余帧 = Form1.UiCheckBox4.Checked
         a.视频参数_启用比特率参数 = Form1.UiCheckBox8.Checked
-        If Form1.UiComboBox6.SelectedIndex = 0 Then a.视频参数_比特率_控制方式 = "CRF"
-        If Form1.UiComboBox6.SelectedIndex = 1 Then a.视频参数_比特率_控制方式 = "CQP"
-        If Form1.UiComboBox6.SelectedIndex = 2 Then a.视频参数_比特率_控制方式 = "ABR"
-        If Form1.UiComboBox6.SelectedIndex = 3 Then a.视频参数_比特率_控制方式 = "TPE"
-        If Form1.UiComboBox6.SelectedIndex = 4 Then a.视频参数_比特率_控制方式 = "CBR"
+        '动态码率 VBR - 存储首选，硬件加速首选
+        '动态码率 VBR HQ - 硬件加速专用，极致质量
+        '恒定质量 CRF - 存储首选，软件编码首选
+        '恒定量化 CQP - 不推荐，主用于研究和特定场景
+        '平均码率 ABR - 折中方案，在一定范围内波动
+        '二次编码 TPE - 花费时间节省比特率
+        '恒定速率 CBR - 流媒体常用，不适合存储
+        If Form1.UiComboBox6.SelectedIndex = 0 Then a.视频参数_比特率_控制方式 = "VBR"
+        If Form1.UiComboBox6.SelectedIndex = 1 Then a.视频参数_比特率_控制方式 = "VBR HQ"
+        If Form1.UiComboBox6.SelectedIndex = 2 Then a.视频参数_比特率_控制方式 = "CRF"
+        If Form1.UiComboBox6.SelectedIndex = 3 Then a.视频参数_比特率_控制方式 = "CQP"
+        If Form1.UiComboBox6.SelectedIndex = 4 Then a.视频参数_比特率_控制方式 = "ABR"
+        If Form1.UiComboBox6.SelectedIndex = 5 Then a.视频参数_比特率_控制方式 = "TPE"
+        If Form1.UiComboBox6.SelectedIndex = 6 Then a.视频参数_比特率_控制方式 = "CBR"
         a.视频参数_比特率_基础 = Form1.UiTextBox3.Text
         a.视频参数_比特率_质量值 = Form1.UiTextBox4.Text
-        a.视频参数_比特率_CBR最低值 = Form1.UiTextBox6.Text
-        a.视频参数_比特率_CBR最高值 = Form1.UiTextBox7.Text
-        a.视频参数_比特率_CBR缓冲区 = Form1.UiTextBox8.Text
+        a.视频参数_比特率_HQ前瞻分析帧数 = Form1.UiTextBox13.Text
+        a.视频参数_比特率_最低值 = Form1.UiTextBox6.Text
+        a.视频参数_比特率_最高值 = Form1.UiTextBox7.Text
+        a.视频参数_比特率_缓冲区 = Form1.UiTextBox8.Text
         a.视频参数_启用快速剪辑参数 = Form1.UiCheckBox17.Checked
         a.视频参数_快速剪辑_入点 = Form1.UiTextBox5.Text
         a.视频参数_快速剪辑_出点 = Form1.UiTextBox18.Text
@@ -183,7 +206,7 @@ Public Class 预设管理
 
     Public Shared Sub 重置解码器选择()
         Form1.UiRadioButton1.Checked = False
-        Form1.UiRadioButton2.Checked = False
+        Form1.UiRadioButton2.Checked = True
         Form1.UiRadioButton3.Checked = False
         Form1.UiRadioButton4.Checked = False
         Form1.UiRadioButton5.Checked = False
@@ -325,23 +348,58 @@ Public Class 预设管理
             If a.视频参数_帧速率_自动丢弃多余帧 Then arg &= "-vsync vfr "
         End If
         If a.视频参数_启用比特率参数 Then
+            '动态码率 VBR - 存储首选，硬件加速首选
+            '动态码率 VBR HQ - 硬件加速专用，极致质量
+            '恒定质量 CRF - 存储首选，软件编码首选
+            '恒定量化 CQP - 不推荐，主用于研究和特定场景
+            '平均码率 ABR - 折中方案，在一定范围内波动
+            '二次编码 TPE - 花费时间节省比特率
+            '恒定速率 CBR - 流媒体常用，不适合存储
             Select Case a.视频参数_比特率_控制方式
-                Case "CRF"
+                Case "VBR"
+                    arg &= $"-rc vbr "
                     If a.视频参数_比特率_基础 <> "" Then arg &= $"-b:v {a.视频参数_比特率_基础} "
-                    If a.视频参数_比特率_质量值 <> "" Then arg &= $"-crf {a.视频参数_比特率_质量值} "
+                    If a.视频参数_比特率_质量值 <> "" Then arg &= $"-cq {a.视频参数_比特率_质量值} "
+                Case "VBR HQ"
+                    Select Case a.视频参数_编码器_具体编码
+                        Case "hevc_nvenc", "h264_nvenc"
+                            arg &= $"-rc vbr_hq "
+                            If a.视频参数_比特率_质量值 <> "" Then arg &= $"-cq {a.视频参数_比特率_质量值} "
+                            If a.视频参数_比特率_HQ前瞻分析帧数 <> "" Then arg &= $"-rc-lookahead {a.视频参数_比特率_HQ前瞻分析帧数} "
+                        Case "hevc_amf", "h264_amf"
+                            arg &= $"-rc vbr_peak "
+                            If a.视频参数_比特率_质量值 <> "" Then arg &= $"-cq {a.视频参数_比特率_质量值} "
+                            arg &= $"-quality quality "
+                        Case "hevc_qsv", "h264_qsv"
+                            arg &= $"-rc la_icq "
+                            If a.视频参数_比特率_质量值 <> "" Then arg &= $"-cq {a.视频参数_比特率_质量值} "
+                            If a.视频参数_比特率_HQ前瞻分析帧数 <> "" Then arg &= $"-look_ahead_depth {a.视频参数_比特率_HQ前瞻分析帧数} "
+                        Case Else
+                            Exit Select
+                    End Select
+                    'HQ模式不支持码率设置
+                Case "CRF"
+                    arg &= $"-rc crf "
+                    If a.视频参数_比特率_基础 <> "" Then arg &= $"-b:v {a.视频参数_比特率_基础} "
+                    If a.视频参数_比特率_质量值 <> "" Then arg &= $"-cq {a.视频参数_比特率_质量值} "
                 Case "CQP"
+                    arg &= $"-rc cqp "
                     If a.视频参数_比特率_基础 <> "" Then arg &= $"-b:v {a.视频参数_比特率_基础} "
                     If a.视频参数_比特率_质量值 <> "" Then arg &= $"-qp {a.视频参数_比特率_质量值} "
                 Case "ABR"
                     If a.视频参数_比特率_基础 <> "" Then arg &= $"-b:v {a.视频参数_比特率_基础} "
+                    If a.视频参数_比特率_最低值 <> "" Then arg &= $"-minrate {a.视频参数_比特率_最低值} "
+                    If a.视频参数_比特率_最高值 <> "" Then arg &= $"-maxrate {a.视频参数_比特率_最高值} "
+                    If a.视频参数_比特率_缓冲区 <> "" Then arg &= $"-bufsize {a.视频参数_比特率_缓冲区} "
                 Case "TPE"
                     If a.视频参数_比特率_基础 <> "" Then arg &= $"-b:v {a.视频参数_比特率_基础} "
                     arg &= $"-pass 2 "
                 Case "CBR"
+                    arg &= $"-rc cbr "
                     If a.视频参数_比特率_基础 <> "" Then arg &= $"-b:v {a.视频参数_比特率_基础} "
-                    If a.视频参数_比特率_CBR最低值 <> "" Then arg &= $"-minrate {a.视频参数_比特率_CBR最低值} "
-                    If a.视频参数_比特率_CBR最高值 <> "" Then arg &= $"-maxrate {a.视频参数_比特率_CBR最高值} "
-                    If a.视频参数_比特率_CBR缓冲区 <> "" Then arg &= $"-bufsize {a.视频参数_比特率_CBR缓冲区} "
+                    If a.视频参数_比特率_最低值 <> "" Then arg &= $"-minrate {a.视频参数_比特率_最低值} "
+                    If a.视频参数_比特率_最高值 <> "" Then arg &= $"-maxrate {a.视频参数_比特率_最高值} "
+                    If a.视频参数_比特率_缓冲区 <> "" Then arg &= $"-bufsize {a.视频参数_比特率_缓冲区} "
             End Select
         End If
         If a.视频参数_启用快速剪辑参数 Then
@@ -406,7 +464,7 @@ Public Class 预设管理
             End Select
         End If
         If a.音频参数_启用声道数参数 Then
-            If a.音频参数_声道数 <> "" Then arg &= $"-ac {a.音频参数_声道数} "
+            If a.音频参数_声道数 <> "" Then arg &= $"-channel_layout {a.音频参数_声道数} "
         End If
         If a.音频参数_启用采样率参数 Then
             If a.音频参数_采样率 <> "" Then arg &= $"-ar {a.音频参数_采样率} "

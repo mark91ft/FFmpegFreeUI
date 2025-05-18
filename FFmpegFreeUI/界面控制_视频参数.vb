@@ -1,4 +1,6 @@
-﻿Public Class 界面控制_视频参数
+﻿Imports Sunny.UI
+
+Public Class 界面控制_视频参数
 
     Public Shared Sub 视频编码器参数开关事件()
         If Form1.UiCheckBox6.Checked Then
@@ -166,23 +168,82 @@
         End If
     End Sub
 
+    Public Shared Sub 视频帧速率参数开关按下事件()
+        If Not Form1.UiCheckBox5.Checked Then
+            Form1.UiComboBox4.Text = ""
+            Form1.UiCheckBox4.Checked = False
+        End If
+    End Sub
+    Public Shared Sub 视频帧速率改动事件()
+        If Form1.UiComboBox4.Text = "" Then
+            If Not Form1.UiCheckBox4.Checked Then
+                Form1.UiCheckBox5.Checked = False
+            Else
+                Form1.UiCheckBox5.Checked = True
+            End If
+        Else
+            Form1.UiCheckBox5.Checked = True
+        End If
+    End Sub
+    Public Shared Sub 视频帧速率动态帧率开关按下事件()
+        If Form1.UiCheckBox4.Checked Then
+            Form1.UiCheckBox5.Checked = True
+        Else
+            If Form1.UiComboBox4.Text = "" Then
+                Form1.UiCheckBox5.Checked = False
+            End If
+        End If
+    End Sub
 
 
 
+    Public Shared Sub 视频比特率参数开关按下事件()
+        If Not Form1.UiCheckBox8.Checked Then
+            Form1.UiComboBox6.Text = ""
+            Form1.UiTextBox3.Text = ""
+            Form1.UiTextBox4.Text = ""
+            Form1.UiTextBox13.Text = ""
+            Form1.UiTextBox6.Text = ""
+            Form1.UiTextBox7.Text = ""
+            Form1.UiTextBox8.Text = ""
+            Form1.Panel20.Visible = False
+            Form1.Panel9.Visible = False
+            Form1.Panel22.Visible = False
+        End If
+    End Sub
     Public Shared Sub 视频比特率控制方式改动事件()
         Select Case Form1.UiComboBox6.SelectedIndex
-            Case 0, 1 'CRF, CQP
+            Case 0
                 Form1.Panel20.Visible = True
+                Form1.Panel9.Visible = False
                 Form1.Panel22.Visible = False
-            Case 2, 3 'ABR, TPE
-                Form1.Panel20.Visible = False
+            Case 1
+                Form1.Panel20.Visible = True
+                Form1.Panel9.Visible = True
                 Form1.Panel22.Visible = False
-            Case 4 'CBR
+            Case 2, 3
+                Form1.Panel20.Visible = True
+                Form1.Panel9.Visible = False
+                Form1.Panel22.Visible = False
+            Case 4, 6
                 Form1.Panel20.Visible = False
+                Form1.Panel9.Visible = False
                 Form1.Panel22.Visible = True
+            Case 5
+                Form1.Panel20.Visible = False
+                Form1.Panel9.Visible = False
+                Form1.Panel22.Visible = False
         End Select
     End Sub
 
+
+
+    Public Shared Sub 视频画面视觉参数开关按下事件()
+        If Not Form1.UiCheckBox9.Checked Then
+            Form1.UiComboBox8.Text = ""
+            Form1.UiComboBox9.Text = ""
+        End If
+    End Sub
     Public Shared Sub 视频画面规格改动事件()
         If Form1.UiComboBox8.Text = "" AndAlso Form1.UiComboBox9.Text = "" Then
             Form1.UiCheckBox9.Checked = False
@@ -190,7 +251,6 @@
             Form1.UiCheckBox9.Checked = True
         End If
     End Sub
-
     Public Shared Sub 视频像素格式改动事件()
         If Form1.UiComboBox9.Text.Contains("="c) Then Form1.UiComboBox9.Text = ""
         If Form1.UiComboBox8.Text = "" AndAlso Form1.UiComboBox9.Text = "" Then
