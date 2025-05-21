@@ -215,22 +215,32 @@ Public Class 界面控制_视频参数
                 Form1.Panel20.Visible = True
                 Form1.Panel9.Visible = False
                 Form1.Panel22.Visible = False
+                Form1.UiCheckBox8.Checked = True
             Case 2
                 Form1.Panel20.Visible = True
                 Form1.Panel9.Visible = True
                 Form1.Panel22.Visible = False
+                Form1.UiCheckBox8.Checked = True
             Case 3, 4
                 Form1.Panel20.Visible = True
                 Form1.Panel9.Visible = False
                 Form1.Panel22.Visible = False
+                Form1.UiCheckBox8.Checked = True
             Case 5, 7
                 Form1.Panel20.Visible = False
                 Form1.Panel9.Visible = False
                 Form1.Panel22.Visible = True
+                Form1.UiCheckBox8.Checked = True
+            Case 6
+                Form1.Panel20.Visible = False
+                Form1.Panel9.Visible = False
+                Form1.Panel22.Visible = False
+                Form1.UiCheckBox8.Checked = True
             Case Else
                 Form1.Panel20.Visible = False
                 Form1.Panel9.Visible = False
                 Form1.Panel22.Visible = False
+                Form1.UiCheckBox8.Checked = False
         End Select
     End Sub
 
