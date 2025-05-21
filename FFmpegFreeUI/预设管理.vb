@@ -1,6 +1,4 @@
 ﻿Imports System.IO
-Imports System.Runtime.ConstrainedExecution
-Imports System.Runtime.Intrinsics
 Imports System.Text.Json
 Imports Sunny.UI
 
@@ -50,19 +48,19 @@ Public Class 预设管理
         '恒定速率 CBR - 流媒体常用，不适合存储
         Select Case a.视频参数_比特率_控制方式
             Case "VBR"
-                Form1.UiComboBox6.SelectedIndex = 0
-            Case "VBR HQ"
                 Form1.UiComboBox6.SelectedIndex = 1
-            Case "CRF"
+            Case "VBR HQ"
                 Form1.UiComboBox6.SelectedIndex = 2
-            Case "CQP"
+            Case "CRF"
                 Form1.UiComboBox6.SelectedIndex = 3
-            Case "ABR"
+            Case "CQP"
                 Form1.UiComboBox6.SelectedIndex = 4
-            Case "TPE"
+            Case "ABR"
                 Form1.UiComboBox6.SelectedIndex = 5
-            Case "CBR"
+            Case "TPE"
                 Form1.UiComboBox6.SelectedIndex = 6
+            Case "CBR"
+                Form1.UiComboBox6.SelectedIndex = 7
         End Select
         Form1.UiTextBox3.Text = a.视频参数_比特率_基础
         Form1.UiTextBox4.Text = a.视频参数_比特率_质量值
@@ -87,11 +85,11 @@ Public Class 预设管理
         Form1.UiCheckBox13.Checked = a.音频参数_启用比特率参数
         Select Case a.音频参数_比特率_控制方式
             Case "CBR"
-                Form1.UiComboBox13.SelectedIndex = 0
-            Case "VBR"
                 Form1.UiComboBox13.SelectedIndex = 1
-            Case "FLAC"
+            Case "VBR"
                 Form1.UiComboBox13.SelectedIndex = 2
+            Case "FLAC"
+                Form1.UiComboBox13.SelectedIndex = 3
         End Select
         Form1.UiTextBox11.Text = a.音频参数_比特率_基础
         Form1.UiTextBox12.Text = a.音频参数_比特率_质量值
@@ -149,13 +147,13 @@ Public Class 预设管理
         '平均码率 ABR - 折中方案，在一定范围内波动
         '二次编码 TPE - 花费时间节省比特率
         '恒定速率 CBR - 流媒体常用，不适合存储
-        If Form1.UiComboBox6.SelectedIndex = 0 Then a.视频参数_比特率_控制方式 = "VBR"
-        If Form1.UiComboBox6.SelectedIndex = 1 Then a.视频参数_比特率_控制方式 = "VBR HQ"
-        If Form1.UiComboBox6.SelectedIndex = 2 Then a.视频参数_比特率_控制方式 = "CRF"
-        If Form1.UiComboBox6.SelectedIndex = 3 Then a.视频参数_比特率_控制方式 = "CQP"
-        If Form1.UiComboBox6.SelectedIndex = 4 Then a.视频参数_比特率_控制方式 = "ABR"
-        If Form1.UiComboBox6.SelectedIndex = 5 Then a.视频参数_比特率_控制方式 = "TPE"
-        If Form1.UiComboBox6.SelectedIndex = 6 Then a.视频参数_比特率_控制方式 = "CBR"
+        If Form1.UiComboBox6.SelectedIndex = 1 Then a.视频参数_比特率_控制方式 = "VBR"
+        If Form1.UiComboBox6.SelectedIndex = 2 Then a.视频参数_比特率_控制方式 = "VBR HQ"
+        If Form1.UiComboBox6.SelectedIndex = 3 Then a.视频参数_比特率_控制方式 = "CRF"
+        If Form1.UiComboBox6.SelectedIndex = 4 Then a.视频参数_比特率_控制方式 = "CQP"
+        If Form1.UiComboBox6.SelectedIndex = 5 Then a.视频参数_比特率_控制方式 = "ABR"
+        If Form1.UiComboBox6.SelectedIndex = 6 Then a.视频参数_比特率_控制方式 = "TPE"
+        If Form1.UiComboBox6.SelectedIndex = 7 Then a.视频参数_比特率_控制方式 = "CBR"
         a.视频参数_比特率_基础 = Form1.UiTextBox3.Text
         a.视频参数_比特率_质量值 = Form1.UiTextBox4.Text
         a.视频参数_比特率_HQ前瞻分析帧数 = Form1.UiTextBox13.Text
@@ -177,9 +175,9 @@ Public Class 预设管理
         a.音频参数_启用编码器参数 = Form1.UiCheckBox12.Checked
         a.音频参数_编码器_编码名称 = Form1.UiComboBox10.Text
         a.音频参数_启用比特率参数 = Form1.UiCheckBox13.Checked
-        If Form1.UiComboBox13.SelectedIndex = 0 Then a.音频参数_比特率_控制方式 = "CBR"
-        If Form1.UiComboBox13.SelectedIndex = 1 Then a.音频参数_比特率_控制方式 = "VBR"
-        If Form1.UiComboBox13.SelectedIndex = 2 Then a.音频参数_比特率_控制方式 = "FLAC"
+        If Form1.UiComboBox13.SelectedIndex = 1 Then a.音频参数_比特率_控制方式 = "CBR"
+        If Form1.UiComboBox13.SelectedIndex = 2 Then a.音频参数_比特率_控制方式 = "VBR"
+        If Form1.UiComboBox13.SelectedIndex = 3 Then a.音频参数_比特率_控制方式 = "FLAC"
         a.音频参数_比特率_基础 = Form1.UiTextBox11.Text
         a.音频参数_比特率_质量值 = Form1.UiTextBox12.Text
         a.音频参数_启用声道数参数 = Form1.UiCheckBox15.Checked
@@ -379,11 +377,9 @@ Public Class 预设管理
                     End Select
                     'HQ模式不支持码率设置
                 Case "CRF"
-                    arg &= $"-rc crf "
                     If a.视频参数_比特率_基础 <> "" Then arg &= $"-b:v {a.视频参数_比特率_基础} "
-                    If a.视频参数_比特率_质量值 <> "" Then arg &= $"-cq {a.视频参数_比特率_质量值} "
+                    If a.视频参数_比特率_质量值 <> "" Then arg &= $"-crf {a.视频参数_比特率_质量值} "
                 Case "CQP"
-                    arg &= $"-rc cqp "
                     If a.视频参数_比特率_基础 <> "" Then arg &= $"-b:v {a.视频参数_比特率_基础} "
                     If a.视频参数_比特率_质量值 <> "" Then arg &= $"-qp {a.视频参数_比特率_质量值} "
                 Case "ABR"

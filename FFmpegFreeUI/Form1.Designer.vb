@@ -224,7 +224,6 @@ Partial Class Form1
         Panel36 = New Panel()
         Label66 = New Label()
         Panel35 = New Panel()
-        Label63 = New Label()
         UiTextBox12 = New Sunny.UI.UITextBox()
         Panel33 = New Panel()
         Label61 = New Label()
@@ -460,7 +459,7 @@ Partial Class Form1
         Label79.Name = "Label79"
         Label79.Size = New Size(1133, 350)
         Label79.TabIndex = 0
-        Label79.Text = "FFmpegFreeUI v0.2"
+        Label79.Text = "FFmpegFreeUI v0.3"
         Label79.TextAlign = ContentAlignment.BottomCenter
         ' 
         ' TabPage编码队列
@@ -655,7 +654,7 @@ Partial Class Form1
         UiButton15.ForeHoverColor = Color.Silver
         UiButton15.ForePressColor = Color.Silver
         UiButton15.ForeSelectedColor = Color.Silver
-        UiButton15.Location = New Point(970, 10)
+        UiButton15.Location = New Point(870, 10)
         UiButton15.MinimumSize = New Size(1, 1)
         UiButton15.Name = "UiButton15"
         UiButton15.Radius = 0
@@ -666,7 +665,7 @@ Partial Class Form1
         UiButton15.RectPressColor = Color.FromArgb(CByte(64), CByte(148), CByte(64))
         UiButton15.RectSelectedColor = Color.CornflowerBlue
         UiButton15.RectSize = 2
-        UiButton15.Size = New Size(100, 40)
+        UiButton15.Size = New Size(110, 40)
         UiButton15.TabIndex = 76
         UiButton15.Text = "复制命令行"
         UiButton15.TipsFont = New Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
@@ -674,7 +673,7 @@ Partial Class Form1
         ' Label77
         ' 
         Label77.Dock = DockStyle.Left
-        Label77.Location = New Point(960, 10)
+        Label77.Location = New Point(860, 10)
         Label77.Name = "Label77"
         Label77.Size = New Size(10, 40)
         Label77.TabIndex = 75
@@ -694,7 +693,7 @@ Partial Class Form1
         UiButton7.ForeHoverColor = Color.CornflowerBlue
         UiButton7.ForePressColor = Color.CornflowerBlue
         UiButton7.ForeSelectedColor = Color.CornflowerBlue
-        UiButton7.Location = New Point(860, 10)
+        UiButton7.Location = New Point(770, 10)
         UiButton7.MinimumSize = New Size(1, 1)
         UiButton7.Name = "UiButton7"
         UiButton7.Radius = 0
@@ -705,7 +704,7 @@ Partial Class Form1
         UiButton7.RectPressColor = Color.FromArgb(CByte(64), CByte(148), CByte(64))
         UiButton7.RectSelectedColor = Color.CornflowerBlue
         UiButton7.RectSize = 2
-        UiButton7.Size = New Size(100, 40)
+        UiButton7.Size = New Size(90, 40)
         UiButton7.TabIndex = 74
         UiButton7.Text = "导出配置"
         UiButton7.TipsFont = New Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
@@ -713,7 +712,7 @@ Partial Class Form1
         ' Label16
         ' 
         Label16.Dock = DockStyle.Left
-        Label16.Location = New Point(850, 10)
+        Label16.Location = New Point(760, 10)
         Label16.Name = "Label16"
         Label16.Size = New Size(10, 40)
         Label16.TabIndex = 73
@@ -733,7 +732,7 @@ Partial Class Form1
         UiButton8.ForeHoverColor = Color.CornflowerBlue
         UiButton8.ForePressColor = Color.CornflowerBlue
         UiButton8.ForeSelectedColor = Color.CornflowerBlue
-        UiButton8.Location = New Point(750, 10)
+        UiButton8.Location = New Point(670, 10)
         UiButton8.MinimumSize = New Size(1, 1)
         UiButton8.Name = "UiButton8"
         UiButton8.Radius = 0
@@ -744,7 +743,7 @@ Partial Class Form1
         UiButton8.RectPressColor = Color.FromArgb(CByte(64), CByte(148), CByte(64))
         UiButton8.RectSelectedColor = Color.CornflowerBlue
         UiButton8.RectSize = 2
-        UiButton8.Size = New Size(100, 40)
+        UiButton8.Size = New Size(90, 40)
         UiButton8.TabIndex = 72
         UiButton8.Text = "重新配置"
         UiButton8.TipsFont = New Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
@@ -752,7 +751,7 @@ Partial Class Form1
         ' Label14
         ' 
         Label14.Dock = DockStyle.Left
-        Label14.Location = New Point(740, 10)
+        Label14.Location = New Point(660, 10)
         Label14.Name = "Label14"
         Label14.Size = New Size(10, 40)
         Label14.TabIndex = 63
@@ -772,7 +771,7 @@ Partial Class Form1
         UiButton9.ForeHoverColor = Color.MediumPurple
         UiButton9.ForePressColor = Color.MediumPurple
         UiButton9.ForeSelectedColor = Color.MediumPurple
-        UiButton9.Location = New Point(640, 10)
+        UiButton9.Location = New Point(570, 10)
         UiButton9.MinimumSize = New Size(1, 1)
         UiButton9.Name = "UiButton9"
         UiButton9.Radius = 0
@@ -783,7 +782,7 @@ Partial Class Form1
         UiButton9.RectPressColor = Color.FromArgb(CByte(64), CByte(148), CByte(64))
         UiButton9.RectSelectedColor = Color.CornflowerBlue
         UiButton9.RectSize = 2
-        UiButton9.Size = New Size(100, 40)
+        UiButton9.Size = New Size(90, 40)
         UiButton9.TabIndex = 60
         UiButton9.Text = "定位输出"
         UiButton9.TipsFont = New Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
@@ -791,7 +790,7 @@ Partial Class Form1
         ' Label15
         ' 
         Label15.Dock = DockStyle.Left
-        Label15.Location = New Point(630, 10)
+        Label15.Location = New Point(560, 10)
         Label15.Name = "Label15"
         Label15.Size = New Size(10, 40)
         Label15.TabIndex = 57
@@ -807,11 +806,11 @@ Partial Class Form1
         UiButton4.FillSelectedColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiButton4.Font = New Font("微软雅黑", 10F)
         UiButton4.ForeColor = Color.Silver
-        UiButton4.ForeDisableColor = Color.IndianRed
-        UiButton4.ForeHoverColor = Color.IndianRed
-        UiButton4.ForePressColor = Color.IndianRed
-        UiButton4.ForeSelectedColor = Color.IndianRed
-        UiButton4.Location = New Point(550, 10)
+        UiButton4.ForeDisableColor = Color.Silver
+        UiButton4.ForeHoverColor = Color.Silver
+        UiButton4.ForePressColor = Color.Silver
+        UiButton4.ForeSelectedColor = Color.Silver
+        UiButton4.Location = New Point(490, 10)
         UiButton4.MinimumSize = New Size(1, 1)
         UiButton4.Name = "UiButton4"
         UiButton4.Radius = 0
@@ -822,7 +821,7 @@ Partial Class Form1
         UiButton4.RectPressColor = Color.FromArgb(CByte(64), CByte(148), CByte(64))
         UiButton4.RectSelectedColor = Color.CornflowerBlue
         UiButton4.RectSize = 2
-        UiButton4.Size = New Size(80, 40)
+        UiButton4.Size = New Size(70, 40)
         UiButton4.TabIndex = 62
         UiButton4.Text = "全选"
         UiButton4.TipsFont = New Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
@@ -830,7 +829,7 @@ Partial Class Form1
         ' Label11
         ' 
         Label11.Dock = DockStyle.Left
-        Label11.Location = New Point(540, 10)
+        Label11.Location = New Point(480, 10)
         Label11.Name = "Label11"
         Label11.Size = New Size(10, 40)
         Label11.TabIndex = 61
@@ -850,7 +849,7 @@ Partial Class Form1
         UiButton16.ForeHoverColor = Color.Silver
         UiButton16.ForePressColor = Color.Silver
         UiButton16.ForeSelectedColor = Color.Silver
-        UiButton16.Location = New Point(460, 10)
+        UiButton16.Location = New Point(410, 10)
         UiButton16.MinimumSize = New Size(1, 1)
         UiButton16.Name = "UiButton16"
         UiButton16.Radius = 0
@@ -861,7 +860,7 @@ Partial Class Form1
         UiButton16.RectPressColor = Color.FromArgb(CByte(64), CByte(148), CByte(64))
         UiButton16.RectSelectedColor = Color.CornflowerBlue
         UiButton16.RectSize = 2
-        UiButton16.Size = New Size(80, 40)
+        UiButton16.Size = New Size(70, 40)
         UiButton16.TabIndex = 78
         UiButton16.Text = "重置"
         UiButton16.TipsFont = New Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
@@ -869,7 +868,7 @@ Partial Class Form1
         ' Label78
         ' 
         Label78.Dock = DockStyle.Left
-        Label78.Location = New Point(450, 10)
+        Label78.Location = New Point(400, 10)
         Label78.Name = "Label78"
         Label78.Size = New Size(10, 40)
         Label78.TabIndex = 77
@@ -889,7 +888,7 @@ Partial Class Form1
         UiButton6.ForeHoverColor = Color.IndianRed
         UiButton6.ForePressColor = Color.IndianRed
         UiButton6.ForeSelectedColor = Color.IndianRed
-        UiButton6.Location = New Point(370, 10)
+        UiButton6.Location = New Point(330, 10)
         UiButton6.MinimumSize = New Size(1, 1)
         UiButton6.Name = "UiButton6"
         UiButton6.Radius = 0
@@ -900,7 +899,7 @@ Partial Class Form1
         UiButton6.RectPressColor = Color.FromArgb(CByte(64), CByte(148), CByte(64))
         UiButton6.RectSelectedColor = Color.CornflowerBlue
         UiButton6.RectSize = 2
-        UiButton6.Size = New Size(80, 40)
+        UiButton6.Size = New Size(70, 40)
         UiButton6.TabIndex = 54
         UiButton6.Text = "移除"
         UiButton6.TipsFont = New Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
@@ -908,7 +907,7 @@ Partial Class Form1
         ' Label13
         ' 
         Label13.Dock = DockStyle.Left
-        Label13.Location = New Point(360, 10)
+        Label13.Location = New Point(320, 10)
         Label13.Name = "Label13"
         Label13.Size = New Size(10, 40)
         Label13.TabIndex = 53
@@ -928,7 +927,7 @@ Partial Class Form1
         UiButton5.ForeHoverColor = Color.IndianRed
         UiButton5.ForePressColor = Color.IndianRed
         UiButton5.ForeSelectedColor = Color.IndianRed
-        UiButton5.Location = New Point(280, 10)
+        UiButton5.Location = New Point(250, 10)
         UiButton5.MinimumSize = New Size(1, 1)
         UiButton5.Name = "UiButton5"
         UiButton5.Radius = 0
@@ -939,7 +938,7 @@ Partial Class Form1
         UiButton5.RectPressColor = Color.FromArgb(CByte(64), CByte(148), CByte(64))
         UiButton5.RectSelectedColor = Color.CornflowerBlue
         UiButton5.RectSize = 2
-        UiButton5.Size = New Size(80, 40)
+        UiButton5.Size = New Size(70, 40)
         UiButton5.TabIndex = 52
         UiButton5.Text = "停止"
         UiButton5.TipsFont = New Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
@@ -947,7 +946,7 @@ Partial Class Form1
         ' Label12
         ' 
         Label12.Dock = DockStyle.Left
-        Label12.Location = New Point(270, 10)
+        Label12.Location = New Point(240, 10)
         Label12.Name = "Label12"
         Label12.Size = New Size(10, 40)
         Label12.TabIndex = 51
@@ -967,7 +966,7 @@ Partial Class Form1
         UiButton2.ForeHoverColor = Color.YellowGreen
         UiButton2.ForePressColor = Color.YellowGreen
         UiButton2.ForeSelectedColor = Color.YellowGreen
-        UiButton2.Location = New Point(190, 10)
+        UiButton2.Location = New Point(170, 10)
         UiButton2.MinimumSize = New Size(1, 1)
         UiButton2.Name = "UiButton2"
         UiButton2.Radius = 0
@@ -978,7 +977,7 @@ Partial Class Form1
         UiButton2.RectPressColor = Color.FromArgb(CByte(64), CByte(148), CByte(64))
         UiButton2.RectSelectedColor = Color.CornflowerBlue
         UiButton2.RectSize = 2
-        UiButton2.Size = New Size(80, 40)
+        UiButton2.Size = New Size(70, 40)
         UiButton2.TabIndex = 48
         UiButton2.Text = "恢复"
         UiButton2.TipsFont = New Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
@@ -986,7 +985,7 @@ Partial Class Form1
         ' Label10
         ' 
         Label10.Dock = DockStyle.Left
-        Label10.Location = New Point(180, 10)
+        Label10.Location = New Point(160, 10)
         Label10.Name = "Label10"
         Label10.Size = New Size(10, 40)
         Label10.TabIndex = 47
@@ -1006,7 +1005,7 @@ Partial Class Form1
         UiButton1.ForeHoverColor = Color.Goldenrod
         UiButton1.ForePressColor = Color.Goldenrod
         UiButton1.ForeSelectedColor = Color.Goldenrod
-        UiButton1.Location = New Point(100, 10)
+        UiButton1.Location = New Point(90, 10)
         UiButton1.MinimumSize = New Size(1, 1)
         UiButton1.Name = "UiButton1"
         UiButton1.Radius = 0
@@ -1017,7 +1016,7 @@ Partial Class Form1
         UiButton1.RectPressColor = Color.FromArgb(CByte(64), CByte(148), CByte(64))
         UiButton1.RectSelectedColor = Color.CornflowerBlue
         UiButton1.RectSize = 2
-        UiButton1.Size = New Size(80, 40)
+        UiButton1.Size = New Size(70, 40)
         UiButton1.TabIndex = 46
         UiButton1.Text = "暂停"
         UiButton1.TipsFont = New Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
@@ -1025,7 +1024,7 @@ Partial Class Form1
         ' Label9
         ' 
         Label9.Dock = DockStyle.Left
-        Label9.Location = New Point(90, 10)
+        Label9.Location = New Point(80, 10)
         Label9.Name = "Label9"
         Label9.Size = New Size(10, 40)
         Label9.TabIndex = 45
@@ -1056,7 +1055,7 @@ Partial Class Form1
         UiButton3.RectPressColor = Color.FromArgb(CByte(64), CByte(148), CByte(64))
         UiButton3.RectSelectedColor = Color.CornflowerBlue
         UiButton3.RectSize = 2
-        UiButton3.Size = New Size(80, 40)
+        UiButton3.Size = New Size(70, 40)
         UiButton3.TabIndex = 44
         UiButton3.Text = "开始"
         UiButton3.TipsFont = New Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
@@ -1866,10 +1865,10 @@ Partial Class Form1
         ' 
         UiComboBox11.DataSource = Nothing
         UiComboBox11.Dock = DockStyle.Left
-        UiComboBox11.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList
         UiComboBox11.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiComboBox11.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiComboBox11.FillColor2 = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         UiComboBox11.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiComboBox11.FilterIgnoreCase = True
         UiComboBox11.Font = New Font("微软雅黑", 10F)
         UiComboBox11.ForeColor = Color.Silver
         UiComboBox11.ForeDisableColor = Color.Silver
@@ -1878,20 +1877,25 @@ Partial Class Form1
         UiComboBox11.ItemHeight = 30
         UiComboBox11.ItemHoverColor = Color.FromArgb(CByte(56), CByte(56), CByte(56))
         UiComboBox11.ItemRectColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiComboBox11.Items.AddRange(New Object() {"", "film", "animation", "grain", "stillimage", "fastdecode", "zerolatency", "psnr", "ssim"})
+        UiComboBox11.Items.AddRange(New Object() {"", "uhq", "hq", "ll", "ull", "lossless", "lossless_hp", "quality", "balanced", "speed", "low_power", "low_latency", "ultra_low_latency", "film", "animation", "grain", "stillimage", "fastdecode", "zerolatency", "psnr", "ssim"})
         UiComboBox11.ItemSelectBackColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
         UiComboBox11.ItemSelectForeColor = Color.Silver
         UiComboBox11.Location = New Point(205, 0)
         UiComboBox11.Margin = New Padding(4, 5, 4, 5)
-        UiComboBox11.MaxDropDownItems = 17
         UiComboBox11.MinimumSize = New Size(63, 0)
         UiComboBox11.Name = "UiComboBox11"
         UiComboBox11.Padding = New Padding(0, 0, 30, 2)
         UiComboBox11.RadiusSides = Sunny.UI.UICornerRadiusSides.None
         UiComboBox11.RectColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
         UiComboBox11.RectDisableColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
+        UiComboBox11.ScrollBarBackColor = Color.FromArgb(CByte(16), CByte(16), CByte(16))
+        UiComboBox11.ScrollBarColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiComboBox11.ScrollBarHandleWidth = 20
+        UiComboBox11.ScrollBarStyleInherited = False
+        UiComboBox11.ShowClearButton = True
+        UiComboBox11.ShowFilter = True
         UiComboBox11.Size = New Size(200, 35)
+        UiComboBox11.Style = Sunny.UI.UIStyle.Custom
         UiComboBox11.SymbolSize = 24
         UiComboBox11.TabIndex = 65
         UiComboBox11.TextAlignment = ContentAlignment.MiddleLeft
@@ -1993,7 +1997,7 @@ Partial Class Form1
         UiComboBox9.RectDisableColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
         UiComboBox9.ScrollBarBackColor = Color.FromArgb(CByte(16), CByte(16), CByte(16))
         UiComboBox9.ScrollBarColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiComboBox9.ScrollBarHandleWidth = 10
+        UiComboBox9.ScrollBarHandleWidth = 20
         UiComboBox9.ScrollBarStyleInherited = False
         UiComboBox9.Size = New Size(410, 35)
         UiComboBox9.Style = Sunny.UI.UIStyle.Custom
@@ -2027,7 +2031,7 @@ Partial Class Form1
         UiComboBox8.ItemHeight = 30
         UiComboBox8.ItemHoverColor = Color.FromArgb(CByte(56), CByte(56), CByte(56))
         UiComboBox8.ItemRectColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiComboBox8.Items.AddRange(New Object() {"baseline", "main", "main10", "high", "high10", "high422", "high444", "Professional", "rext", "MainStillPicture"})
+        UiComboBox8.Items.AddRange(New Object() {"", "baseline", "main", "main10", "high", "high10", "high422", "high444", "Professional", "rext", "MainStillPicture"})
         UiComboBox8.ItemSelectBackColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
         UiComboBox8.ItemSelectForeColor = Color.Silver
         UiComboBox8.Location = New Point(205, 0)
@@ -2558,7 +2562,7 @@ Partial Class Form1
         UiComboBox6.ItemHeight = 30
         UiComboBox6.ItemHoverColor = Color.FromArgb(CByte(56), CByte(56), CByte(56))
         UiComboBox6.ItemRectColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiComboBox6.Items.AddRange(New Object() {"动态码率 VBR - 存储首选，硬件加速首选", "动态码率 VBR HQ - 硬件加速专用，极致质量", "恒定质量 CRF - 存储首选，软件编码首选", "恒定量化 CQP - 不推荐，主用于研究和特定场景", "平均码率 ABR - 折中方案，在一定范围内波动", "二次编码 TPE - 花费时间节省比特率", "恒定速率 CBR - 流媒体常用，不适合存储"})
+        UiComboBox6.Items.AddRange(New Object() {"", "动态码率 VBR - 存储首选，硬件加速首选", "动态码率 VBR HQ - 硬件加速专用，极致质量", "恒定质量 CRF - 存储首选，软件编码首选", "恒定量化 CQP - 不推荐，主用于研究和特定场景", "平均码率 ABR - 折中方案，在一定范围内波动", "二次编码 TPE - 花费时间节省比特率", "恒定速率 CBR - 流媒体常用，不适合存储"})
         UiComboBox6.ItemSelectBackColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
         UiComboBox6.ItemSelectForeColor = Color.Silver
         UiComboBox6.Location = New Point(205, 0)
@@ -3529,7 +3533,6 @@ Partial Class Form1
         ' 
         ' Panel35
         ' 
-        Panel35.Controls.Add(Label63)
         Panel35.Controls.Add(UiTextBox12)
         Panel35.Dock = DockStyle.Top
         Panel35.Location = New Point(30, 207)
@@ -3537,18 +3540,6 @@ Partial Class Form1
         Panel35.Padding = New Padding(205, 10, 0, 0)
         Panel35.Size = New Size(1073, 45)
         Panel35.TabIndex = 27
-        ' 
-        ' Label63
-        ' 
-        Label63.Dock = DockStyle.Fill
-        Label63.ForeColor = Color.Gray
-        Label63.Location = New Point(405, 10)
-        Label63.Name = "Label63"
-        Label63.Padding = New Padding(10, 0, 0, 0)
-        Label63.Size = New Size(668, 35)
-        Label63.TabIndex = 76
-        Label63.Text = "都要带上单位，例如 k、m"
-        Label63.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' UiTextBox12
         ' 
@@ -3662,7 +3653,7 @@ Partial Class Form1
         UiComboBox13.ItemHeight = 30
         UiComboBox13.ItemHoverColor = Color.FromArgb(CByte(56), CByte(56), CByte(56))
         UiComboBox13.ItemRectColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiComboBox13.Items.AddRange(New Object() {"恒定速率 CBR - 大多数情况下这已足够", "恒定质量 VBR - 根据质量动态调整比特率", "FLAC 无损专用 - 设置压缩级别 0~12 越大越高"})
+        UiComboBox13.Items.AddRange(New Object() {"", "恒定速率 CBR - 大多数情况下这已足够", "恒定质量 VBR - 根据质量动态调整比特率", "FLAC 无损专用 - 设置压缩级别 0~12 越大越高"})
         UiComboBox13.ItemSelectBackColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
         UiComboBox13.ItemSelectForeColor = Color.Silver
         UiComboBox13.Location = New Point(205, 0)
@@ -3741,7 +3732,7 @@ Partial Class Form1
         UiComboBox10.ItemHeight = 30
         UiComboBox10.ItemHoverColor = Color.FromArgb(CByte(56), CByte(56), CByte(56))
         UiComboBox10.ItemRectColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiComboBox10.Items.AddRange(New Object() {"复制流", "AAC", "LAME MP3", "FLAC", "ALAC", "WAV 16bit", "WAV 24bit", "WAV 32bit Float", "Dolby Digital AC3", "DTS Coherent Acoustics", "Opus", "Vorbis", "True Audio", "禁用"})
+        UiComboBox10.Items.AddRange(New Object() {"", "复制流", "AAC", "LAME MP3", "FLAC", "ALAC", "WAV 16bit", "WAV 24bit", "WAV 32bit Float", "Dolby Digital AC3", "DTS Coherent Acoustics", "Opus", "Vorbis", "True Audio", "禁用"})
         UiComboBox10.ItemSelectBackColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
         UiComboBox10.ItemSelectForeColor = Color.Silver
         UiComboBox10.Location = New Point(205, 0)
@@ -4098,7 +4089,7 @@ Partial Class Form1
         UiComboBox20.ItemHeight = 30
         UiComboBox20.ItemHoverColor = Color.FromArgb(CByte(56), CByte(56), CByte(56))
         UiComboBox20.ItemRectColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiComboBox20.Items.AddRange(New Object() {"无损压缩 PNG 已强制最高压缩度", "有损压缩 JPEG\JPG 质量控制越小越高 1~31", "有损压缩 WEBP 质量控制越大越高 0~100", "无损压缩 WEBP", "无损压缩 TIFF", "有损压缩 AVIF 质量控制越大越高 0~100", "无损压缩 AVIF", "传统动画 GIF", "原画位图 BMP", "医学影像 JPEG-LS", "电影扫描 DPX", "工业光魔 OpenEXR"})
+        UiComboBox20.Items.AddRange(New Object() {"", "无损压缩 PNG 已强制最高压缩度", "有损压缩 JPEG\JPG 质量控制越小越高 1~31", "有损压缩 WEBP 质量控制越大越高 0~100", "无损压缩 WEBP", "无损压缩 TIFF", "有损压缩 AVIF 质量控制越大越高 0~100", "无损压缩 AVIF", "传统动画 GIF", "原画位图 BMP", "医学影像 JPEG-LS", "电影扫描 DPX", "工业光魔 OpenEXR"})
         UiComboBox20.ItemSelectBackColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
         UiComboBox20.ItemSelectForeColor = Color.Silver
         UiComboBox20.Location = New Point(205, 0)
@@ -4800,7 +4791,6 @@ Partial Class Form1
     Friend WithEvents Panel36 As Panel
     Friend WithEvents Label66 As Label
     Friend WithEvents Panel35 As Panel
-    Friend WithEvents Label63 As Label
     Friend WithEvents UiTextBox12 As Sunny.UI.UITextBox
     Friend WithEvents UiTextBox16 As Sunny.UI.UITextBox
     Friend WithEvents Label71 As Label

@@ -140,6 +140,8 @@ Public Class 编码任务
         Public Sub 清除占用()
             FFmpegProcess?.Dispose()
             列表视图项?.Remove()
+            计时器.Stop()
+            GC.Collect()
         End Sub
 
         Public Sub FFmpegOutputHandler(sender As Object, e As DataReceivedEventArgs)
@@ -393,7 +395,6 @@ Public Class 编码任务
         Dim 输出文件名 As String = IO.Path.GetFileNameWithoutExtension(输入文件) & $"_{Now.Year}.{Now.Month}.{Now.Day}-{Now.Hour}.{Now.Minute}.{Now.Second}" & 容器
         Return IO.Path.Combine(输出目录, 输出文件名)
     End Function
-
 
 
 

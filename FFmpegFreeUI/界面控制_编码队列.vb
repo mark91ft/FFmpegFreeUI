@@ -88,6 +88,16 @@ Public Class 界面控制_编码队列
         If Form1.ListView1.SelectedItems.Count <> 1 Then Exit Sub
         If MsgBox("确定将此任务的配置数据用于覆盖几个选项卡中的设置？此操作不可逆！", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
             预设管理.显示预设(编码任务.队列(Form1.ListView1.SelectedItems(0).Index).预设数据)
+
+            Dim 输入文件 = 编码任务.队列(Form1.ListView1.SelectedItems(0).Index).输入文件
+            Dim 已存在 As Boolean = False
+            For Each item As ListViewItem In Form1.ListView2.Items
+                If item.Text = 输入文件 Then
+                    已存在 = True
+                    Exit For
+                End If
+            Next
+            If Not 已存在 Then Form1.ListView2.Items.Add(输入文件)
         End If
     End Sub
 
@@ -102,9 +112,9 @@ Public Class 界面控制_编码队列
     Public Shared Sub 复制命令行()
         If Form1.ListView1.SelectedItems.Count <> 1 Then Exit Sub
         If 编码任务.队列(Form1.ListView1.SelectedItems(0).Index).命令行 = "" Then
-            Clipboard.SetText(预设管理.将预设数据转换为命令行(编码任务.队列(Form1.ListView1.SelectedItems(0).Index).预设数据, 编码任务.队列(Form1.ListView1.SelectedItems(0).Index).输入文件, 编码任务.队列(Form1.ListView1.SelectedItems(0).Index).输出文件))
+            Clipboard.SetText("ffmpeg " & 预设管理.将预设数据转换为命令行(编码任务.队列(Form1.ListView1.SelectedItems(0).Index).预设数据, 编码任务.队列(Form1.ListView1.SelectedItems(0).Index).输入文件, 编码任务.队列(Form1.ListView1.SelectedItems(0).Index).输出文件))
         Else
-            Clipboard.SetText(编码任务.队列(Form1.ListView1.SelectedItems(0).Index).命令行)
+            Clipboard.SetText("ffmpeg " & 编码任务.队列(Form1.ListView1.SelectedItems(0).Index).命令行)
         End If
     End Sub
 

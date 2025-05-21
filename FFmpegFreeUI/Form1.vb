@@ -102,6 +102,7 @@ Public Class Form1
         UiComboBox20.ItemHeight = 30 * DPI
         UiCheckBox27.CheckBoxSize = 20 * DPI
         UiCheckBox26.CheckBoxSize = 20 * DPI
+
     End Sub
 
     Private Sub UiButton前往爱发电_Click(sender As Object, e As EventArgs) Handles UiButton前往爱发电.Click

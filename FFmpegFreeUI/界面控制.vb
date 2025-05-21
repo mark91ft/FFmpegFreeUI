@@ -38,24 +38,27 @@ Public Class 界面控制
         AddHandler Form1.UiCheckBox2.Click, AddressOf 界面控制_视频参数.视频分辨率自动计算开关按下事件
         AddHandler Form1.UiTextBox1.TextChanged, AddressOf 界面控制_视频参数.视频分辨率宽度文本框文本变动事件
         AddHandler Form1.UiTextBox2.TextChanged, AddressOf 界面控制_视频参数.视频分辨率高度文本框文本变动事件
-
-
-
-
-
         AddHandler Form1.UiCheckBox5.Click, AddressOf 界面控制_视频参数.视频帧速率参数开关按下事件
         AddHandler Form1.UiComboBox4.TextChanged, AddressOf 界面控制_视频参数.视频帧速率改动事件
         AddHandler Form1.UiCheckBox4.Click, AddressOf 界面控制_视频参数.视频帧速率动态帧率开关按下事件
 
+        AddHandler Form1.UiCheckBox8.Click, AddressOf 界面控制_视频参数.视频比特率参数开关按下事件
+        AddHandler Form1.UiComboBox6.SelectedIndexChanged, AddressOf 界面控制_视频参数.视频比特率控制方式改动事件
 
-
-
+        AddHandler Form1.UiCheckBox17.Click, AddressOf 界面控制_视频参数.视频快速剪辑参数开关按下事件
+        AddHandler Form1.UiTextBox5.TextChanged, AddressOf 界面控制_视频参数.视频快速剪辑文本框文本变动事件
+        AddHandler Form1.UiTextBox18.TextChanged, AddressOf 界面控制_视频参数.视频快速剪辑文本框文本变动事件
 
         AddHandler Form1.UiCheckBox9.Click, AddressOf 界面控制_视频参数.视频画面视觉参数开关按下事件
-        AddHandler Form1.UiComboBox6.SelectedIndexChanged, AddressOf 界面控制_视频参数.视频比特率控制方式改动事件
-        AddHandler Form1.UiComboBox8.SelectedIndexChanged, AddressOf 界面控制_视频参数.视频画面规格改动事件
-        AddHandler Form1.UiComboBox9.SelectedIndexChanged, AddressOf 界面控制_视频参数.视频像素格式改动事件
+        AddHandler Form1.UiComboBox8.TextChanged, AddressOf 界面控制_视频参数.视频画面规格改动事件
+        AddHandler Form1.UiComboBox9.TextChanged, AddressOf 界面控制_视频参数.视频像素格式改动事件
 
+        AddHandler Form1.UiCheckBox7.Click, AddressOf 界面控制_视频参数.视频编码技术参数开关按下事件
+        AddHandler Form1.UiComboBox11.TextChanged, AddressOf 界面控制_视频参数.视频编码技术文本框文本变动事件
+        AddHandler Form1.UiTextBox9.TextChanged, AddressOf 界面控制_视频参数.视频编码技术文本框文本变动事件
+
+        AddHandler Form1.UiCheckBox10.Click, AddressOf 界面控制_视频参数.视频自定义参数开关按下事件
+        AddHandler Form1.UiTextBox10.TextChanged, AddressOf 界面控制_视频参数.视频自定义参数文本框文本变动事件
 
 
         AddHandler Form1.UiButton22.Click, AddressOf 预设管理.保存预设到文件

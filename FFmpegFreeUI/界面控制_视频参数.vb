@@ -195,8 +195,6 @@ Public Class 界面控制_视频参数
         End If
     End Sub
 
-
-
     Public Shared Sub 视频比特率参数开关按下事件()
         If Not Form1.UiCheckBox8.Checked Then
             Form1.UiComboBox6.Text = ""
@@ -213,30 +211,42 @@ Public Class 界面控制_视频参数
     End Sub
     Public Shared Sub 视频比特率控制方式改动事件()
         Select Case Form1.UiComboBox6.SelectedIndex
-            Case 0
+            Case 1
                 Form1.Panel20.Visible = True
                 Form1.Panel9.Visible = False
                 Form1.Panel22.Visible = False
-            Case 1
+            Case 2
                 Form1.Panel20.Visible = True
                 Form1.Panel9.Visible = True
                 Form1.Panel22.Visible = False
-            Case 2, 3
+            Case 3, 4
                 Form1.Panel20.Visible = True
                 Form1.Panel9.Visible = False
                 Form1.Panel22.Visible = False
-            Case 4, 6
+            Case 5, 7
                 Form1.Panel20.Visible = False
                 Form1.Panel9.Visible = False
                 Form1.Panel22.Visible = True
-            Case 5
+            Case Else
                 Form1.Panel20.Visible = False
                 Form1.Panel9.Visible = False
                 Form1.Panel22.Visible = False
         End Select
     End Sub
 
-
+    Public Shared Sub 视频快速剪辑参数开关按下事件()
+        If Not Form1.UiCheckBox17.Checked Then
+            Form1.UiTextBox5.Text = ""
+            Form1.UiTextBox18.Text = ""
+        End If
+    End Sub
+    Public Shared Sub 视频快速剪辑文本框文本变动事件()
+        If Form1.UiTextBox5.Text = "" AndAlso Form1.UiTextBox18.Text = "" Then
+            Form1.UiCheckBox17.Checked = False
+        Else
+            Form1.UiCheckBox17.Checked = True
+        End If
+    End Sub
 
     Public Shared Sub 视频画面视觉参数开关按下事件()
         If Not Form1.UiCheckBox9.Checked Then
@@ -260,5 +270,31 @@ Public Class 界面控制_视频参数
         End If
     End Sub
 
+    Public Shared Sub 视频编码技术参数开关按下事件()
+        If Not Form1.UiCheckBox7.Checked Then
+            Form1.UiComboBox11.Text = ""
+            Form1.UiTextBox9.Text = ""
+        End If
+    End Sub
+    Public Shared Sub 视频编码技术文本框文本变动事件()
+        If Form1.UiComboBox11.Text = "" AndAlso Form1.UiTextBox9.Text = "" Then
+            Form1.UiCheckBox7.Checked = False
+        Else
+            Form1.UiCheckBox7.Checked = True
+        End If
+    End Sub
+
+    Public Shared Sub 视频自定义参数开关按下事件()
+        If Not Form1.UiCheckBox10.Checked Then
+            Form1.UiTextBox10.Text = ""
+        End If
+    End Sub
+    Public Shared Sub 视频自定义参数文本框文本变动事件()
+        If Form1.UiTextBox10.Text = "" Then
+            Form1.UiCheckBox10.Checked = False
+        Else
+            Form1.UiCheckBox10.Checked = True
+        End If
+    End Sub
 
 End Class
