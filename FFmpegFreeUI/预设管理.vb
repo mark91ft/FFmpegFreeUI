@@ -737,27 +737,45 @@ Public Class 预设管理
 
         '=================================================================
 
-        If a.流控制_启用保留其他视频流 Then
-            arg &= $"-map 0:v -c:v copy "
+        If a.流控制_启用保留其他视频流 AndAlso 视频参数 <> "" Then
+            arg &= $"-map 0:v? -c:v copy "
+            If a.流控制_将视频参数应用于指定流.Length > 0 Then
+                For Each vi In a.流控制_将视频参数应用于指定流
+                    arg &= $"-map -0:v:{vi} "
+                Next
+            Else
+                If 视频参数 <> "" Then arg &= $"-map -0:v:0 "
+            End If
         End If
         If a.流控制_将视频参数应用于指定流.Length > 0 Then
-            For Each vi In a.流控制_将视频参数应用于指定流
-                arg &= $"-map 0:v:{vi} {视频参数} "
-            Next
+            If 视频参数 <> "" Then
+                For Each vi In a.流控制_将视频参数应用于指定流
+                    arg &= $"-map 0:v:{vi} {视频参数} "
+                Next
+            End If
         Else
-            arg &= $"-map 0:v:0 {视频参数} "
+            If 视频参数 <> "" Then arg &= $"-map 0:v:0 {视频参数} "
         End If
         '=================================================================
 
-        If a.流控制_启用保留其他音频流 Then
-            arg &= $"-map 0:v -c:a copy "
+        If a.流控制_启用保留其他音频流 AndAlso 音频参数 <> "" Then
+            arg &= $"-map 0:a? -c:a copy "
+            If a.流控制_将音频参数应用于指定流.Length > 0 Then
+                For Each vi In a.流控制_将音频参数应用于指定流
+                    arg &= $"-map -0:a:{vi} "
+                Next
+            Else
+                If 音频参数 <> "" Then arg &= $"-map -0:a:0 "
+            End If
         End If
         If a.流控制_将音频参数应用于指定流.Length > 0 Then
-            For Each vi In a.流控制_将音频参数应用于指定流
-                arg &= $"-map 0:a:{vi} {音频参数} "
-            Next
+            If 音频参数 <> "" Then
+                For Each vi In a.流控制_将音频参数应用于指定流
+                    arg &= $"-map 0:a:{vi} {音频参数} "
+                Next
+            End If
         Else
-            arg &= $"-map 0:a:0 {音频参数} "
+            If 音频参数 <> "" Then arg &= $"-map 0:a:0 {音频参数} "
         End If
         '=================================================================
 
