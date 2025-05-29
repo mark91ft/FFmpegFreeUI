@@ -69,6 +69,14 @@ Public Class 编码任务
                     输出文件 = 计算输出位置_自定义目录(自定义输出位置, 输入文件, 预设数据.输出容器)
                 End If
                 命令行 = 预设管理.将预设数据转换为命令行(预设数据, 输入文件, 输出文件)
+                If 预设数据.流控制_启用快速剪辑参数 Then
+                    If 预设数据.流控制_快速剪辑_入点 <> "" AndAlso 预设数据.流控制_快速剪辑_出点 <> "" Then
+                        Dim t1 = ParseTimeSpan(预设数据.流控制_快速剪辑_入点)
+                        Dim t2 = ParseTimeSpan(预设数据.流控制_快速剪辑_出点)
+                        获取_总时长 = t2 - t1
+                        已获取到总时长 = True
+                    End If
+                End If
                 FFmpegProcess = New Process()
                 FFmpegProcess.StartInfo.FileName = "ffmpeg.exe"
                 FFmpegProcess.StartInfo.WorkingDirectory = Application.StartupPath
@@ -102,7 +110,7 @@ Public Class 编码任务
                 End If
                 根据状态设置项信息显示()
             Catch ex As Exception
-
+                MsgBox(ex.Message, MsgBoxStyle.Critical)
             End Try
         End Sub
 
@@ -116,7 +124,7 @@ Public Class 编码任务
                 End If
                 根据状态设置项信息显示()
             Catch ex As Exception
-
+                MsgBox(ex.Message, MsgBoxStyle.Critical)
             End Try
         End Sub
 
@@ -133,11 +141,16 @@ Public Class 编码任务
                 End If
                 根据状态设置项信息显示()
             Catch ex As Exception
-
+                MsgBox(ex.Message, MsgBoxStyle.Critical)
             End Try
         End Sub
 
         Public Sub 清除占用()
+            If FFmpegProcess IsNot Nothing Then
+                If Not FFmpegProcess.HasExited Then
+                    FFmpegProcess.Kill()
+                End If
+            End If
             FFmpegProcess?.Dispose()
             列表视图项?.Remove()
             计时器.Stop()
@@ -147,6 +160,7 @@ Public Class 编码任务
         Public Sub FFmpegOutputHandler(sender As Object, e As DataReceivedEventArgs)
             If e.Data Is Nothing Then Exit Sub
             Dim line As String = e.Data
+            实时输出 = line
             If Not 已获取到总时长 Then
                 Dim durationMatch = DurationPattern.Match(line)
                 If durationMatch.Success Then
@@ -155,12 +169,10 @@ Public Class 编码任务
                 End If
             End If
             Form1.重新创建句柄()
-            If 在实时输出中提取数据(line) Then
-                实时输出 = line
-            End If
+            在实时输出中提取数据(line)
             If line.Contains("Error") OrElse line.Contains("Invalid") OrElse line.Contains("cannot") OrElse line.Contains("failed") Then
                 错误列表.Add(line)
-                状态 = 编码状态.错误
+                '状态 = 编码状态.错误
             End If
             Form1.Invoke(AddressOf 在界面上刷新数据)
             Form1.Invoke(AddressOf 根据状态设置项信息显示)
@@ -185,15 +197,18 @@ Public Class 编码任务
         Public Sub 在界面上刷新数据()
             If 列表视图项 Is Nothing Then Exit Sub
             列表视图项.SubItems(1).Text = 状态.ToString
-            If 状态 <> 编码状态.正在处理 Then Exit Sub
 
             Dim progressText As String = "N/A"
+            Dim progress As Double = 0
             If 获取_总时长.TotalSeconds > 0 AndAlso 实时_time.TotalSeconds > 0 Then
-                Dim progress = Math.Min(实时_time.TotalSeconds / 获取_总时长.TotalSeconds, 1.0)
+                progress = Math.Min(实时_time.TotalSeconds / 获取_总时长.TotalSeconds, 1.0)
                 progressText = $"{progress * 100:F1}%"
                 If progress = 0 Then progressText = "N/A"
             End If
             列表视图项.SubItems(2).Text = progressText
+
+            Dim prevSpeedPercent As String = 列表视图项.SubItems(3).Text
+            Dim prevBitrate As String = 列表视图项.SubItems(6).Text
 
             Dim speedPercent As String = "N/A"
             If Not String.IsNullOrWhiteSpace(实时_speed) Then
@@ -201,6 +216,10 @@ Public Class 编码任务
                 If Double.TryParse(实时_speed.Replace("x", "").Trim(), Globalization.NumberStyles.Any, Globalization.CultureInfo.InvariantCulture, speedValue) AndAlso speedValue > 0 Then
                     speedPercent = $"{speedValue * 100:F0}%"
                 End If
+            End If
+
+            If progress = 1.0 AndAlso speedPercent = "N/A" Then
+                speedPercent = prevSpeedPercent
             End If
             列表视图项.SubItems(3).Text = speedPercent
 
@@ -223,7 +242,16 @@ Public Class 编码任务
 
             列表视图项.SubItems(5).Text = If(String.IsNullOrWhiteSpace(实时_q) OrElse 实时_q = "0", "N/A", $"{实时_q:F0}")
 
-            列表视图项.SubItems(6).Text = If(String.IsNullOrWhiteSpace(实时_bitrate) OrElse 实时_bitrate = "0", "N/A", 实时_bitrate & " kbps")
+            Dim bitrateText As String
+            If String.IsNullOrWhiteSpace(实时_bitrate) OrElse 实时_bitrate = "0" Then
+                bitrateText = "N/A"
+            Else
+                bitrateText = 实时_bitrate & " kbps"
+            End If
+            If progress = 1.0 AndAlso bitrateText = "N/A" Then
+                bitrateText = prevBitrate
+            End If
+            列表视图项.SubItems(6).Text = bitrateText
 
             Dim remainTimeText As String = "N/A"
             If 获取_总时长.TotalSeconds > 0 AndAlso 实时_time.TotalSeconds > 0 AndAlso Not String.IsNullOrWhiteSpace(实时_speed) Then
@@ -245,12 +273,15 @@ Public Class 编码任务
             列表视图项.SubItems(7).Text = remainTimeText
         End Sub
 
-        Public Function 在实时输出中提取数据(line As String) As Boolean
-            实时_frame = ExtractRegexValueAsString(FramePattern, line)
+        Public Sub 在实时输出中提取数据(line As String)
+            Dim frameStr = ExtractRegexValueAsString(FramePattern, line)
+            If Not String.IsNullOrEmpty(frameStr) Then 实时_frame = frameStr
 
-            ExtractRegexValueAsString(FramePattern, line)
-            实时_fps = ExtractRegexValueAsString(FpsPattern, line)
-            实时_q = ExtractRegexValueAsString(QPattern, line)
+            Dim fpsStr = ExtractRegexValueAsString(FpsPattern, line)
+            If Not String.IsNullOrEmpty(fpsStr) Then 实时_fps = fpsStr
+
+            Dim qStr = ExtractRegexValueAsString(QPattern, line)
+            If Not String.IsNullOrEmpty(qStr) Then 实时_q = qStr
 
             Dim sizeMatch = SizePattern.Match(line)
             If sizeMatch.Success Then
@@ -262,8 +293,6 @@ Public Class 编码任务
                 Else
                     实时_size = valueStr
                 End If
-            Else
-                实时_size = ""
             End If
 
             Dim timeStr = ExtractRegexValueAsString(TimePattern, line)
@@ -271,14 +300,12 @@ Public Class 编码任务
                 实时_time = ParseTimeSpan(timeStr)
             End If
 
-            实时_bitrate = ExtractRegexValueAsString(BitratePattern, line)
-            实时_speed = ExtractRegexValueAsString(SpeedPattern, line)
-            If line.Contains("frame=") AndAlso line.Contains("speed=") Then
-                Return True
-            Else
-                Return False
-            End If
-        End Function
+            Dim bitrateStr = ExtractRegexValueAsString(BitratePattern, line)
+            If Not String.IsNullOrEmpty(bitrateStr) Then 实时_bitrate = bitrateStr
+
+            Dim speedStr = ExtractRegexValueAsString(SpeedPattern, line)
+            If Not String.IsNullOrEmpty(speedStr) Then 实时_speed = speedStr
+        End Sub
 
         Public Sub 根据状态设置项信息显示()
             If 列表视图项 Is Nothing Then Exit Sub
@@ -349,12 +376,25 @@ Public Class 编码任务
     Public Shared ReadOnly SpeedPattern As New Regex("speed=\s*(?<value>[\d\.eE\+\-]+)\s*x", RegexOptions.Compiled)
 
     Shared Function ParseTimeSpan(timeStr As String) As TimeSpan
-        Dim parts = timeStr.Split(":"c, "."c)
         Try
-            Dim hours = Integer.Parse(parts(0))
-            Dim minutes = Integer.Parse(parts(1))
-            Dim seconds = Integer.Parse(parts(2))
-            Dim milliseconds = Integer.Parse(parts(3)) * 10 ' .34 → 340ms 
+            Dim hours As Integer = 0
+            Dim minutes As Integer = 0
+            Dim seconds As Integer = 0
+            Dim milliseconds As Integer = 0
+            Dim timeParts = timeStr.Split(":"c)
+            If timeParts.Length < 3 Then Return TimeSpan.Zero
+            hours = Integer.Parse(timeParts(0))
+            minutes = Integer.Parse(timeParts(1))
+            Dim secPart = timeParts(2)
+            If secPart.Contains("."c) Then
+                Dim secMs = secPart.Split("."c)
+                seconds = Integer.Parse(secMs(0))
+                Dim msStr = secMs(1).PadRight(3, "0"c)
+                milliseconds = Integer.Parse(msStr.Substring(0, 3))
+            Else
+                seconds = Integer.Parse(secPart)
+                milliseconds = 0
+            End If
             Return New TimeSpan(0, hours, minutes, seconds, milliseconds)
         Catch
             Return TimeSpan.Zero

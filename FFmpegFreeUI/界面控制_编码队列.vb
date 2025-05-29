@@ -37,7 +37,7 @@ Public Class 界面控制_编码队列
         For Each item As ListViewItem In Form1.ListView1.SelectedItems
             Dim i = item.Index
             Select Case 编码任务.队列(i).状态
-                Case 编码任务.编码状态.正在处理, 编码任务.编码状态.已暂停
+                Case 编码任务.编码状态.正在处理, 编码任务.编码状态.已暂停, 编码任务.编码状态.错误
                     编码任务.队列(i).停止()
             End Select
         Next

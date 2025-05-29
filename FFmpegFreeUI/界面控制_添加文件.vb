@@ -3,7 +3,7 @@ Imports Microsoft.WindowsAPICodePack.Dialogs
 Public Class 界面控制_添加文件
 
     Public Shared Sub 加入编码队列()
-        If Form1.UiComboBox1.Text = "" Then
+        If Form1.UiComboBox输出容器.Text = "" Then
             MsgBox("没有选择或填写输出容器！", MsgBoxStyle.Critical)
             Exit Sub
         End If

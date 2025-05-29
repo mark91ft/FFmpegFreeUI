@@ -12,10 +12,28 @@ Public Class Form1
         上一次窗口状态 = Me.WindowState
     End Sub
 
-    Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+    Private Async Sub Form1_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         界面控制.界面校准()
         重新创建句柄()
         If DPI <> 1 Then DPI变动时校准界面()
+
+        '检测是否有网络
+        If My.Computer.Network.IsAvailable Then
+            Dim a As New GitHubAPI.Release
+            Dim s1 As String = Await a.获取仓库发布版信息Async("Lake1059/FFmpegFreeUI", "")
+            If s1 <> "" Then
+                Label130.Text = s1
+            Else
+                Label130.Text =
+                    "发布标题：" & a.发布标题 & vbCrLf &
+                    "最新标签：" & a.版本标签 & vbCrLf &
+                    "发布用户：" & a.发布者用户名 & vbCrLf &
+                    "文件数量：" & a.可供下载的文件.Count & vbCrLf &
+                    "发布时间：" & a.发布时间
+            End If
+        Else
+            Label130.Text = "无网络连接！联网后重启应用程序以重试"
+        End If
     End Sub
 
     Private Sub Form1_DpiChanged(sender As Object, e As DpiChangedEventArgs) Handles Me.DpiChanged
@@ -58,60 +76,7 @@ Public Class Form1
         Me.ClientSize = New Size(1300 * DPI, 800 * DPI)
         Me.MinimumSize = Me.Size
         Me.UiTabControlMenu1.ItemSize = New Size(150 * DPI, 40 * DPI)
-        UiPanel1.Height = 50 * DPI
-        UiComboBox1.ItemHeight = 30 * DPI
-        UiComboBox21.ItemHeight = 30 * DPI
-        UiCheckBox25.CheckBoxSize = 20 * DPI
-        UiRadioButton1.RadioButtonSize = 20 * DPI
-        UiRadioButton2.RadioButtonSize = 20 * DPI
-        UiRadioButton3.RadioButtonSize = 20 * DPI
-        UiRadioButton4.RadioButtonSize = 20 * DPI
-        UiRadioButton5.RadioButtonSize = 20 * DPI
-        UiRadioButton6.RadioButtonSize = 20 * DPI
-        UiRadioButton7.RadioButtonSize = 20 * DPI
-        UiCheckBox6.CheckBoxSize = 20 * DPI
-        UiComboBox2.ItemHeight = 30 * DPI
-        UiComboBox3.ItemHeight = 30 * DPI
-        UiComboBox7.ItemHeight = 30 * DPI
-        UiCheckBox3.CheckBoxSize = 20 * DPI
-        UiComboBox5.ItemHeight = 30 * DPI
-        UiCheckBox2.CheckBoxSize = 20 * DPI
-        UiCheckBox5.CheckBoxSize = 20 * DPI
-        UiComboBox4.ItemHeight = 30 * DPI
-        UiCheckBox4.CheckBoxSize = 20 * DPI
-        UiCheckBox8.CheckBoxSize = 20 * DPI
-        UiComboBox6.ItemHeight = 30 * DPI
-        UiCheckBox17.CheckBoxSize = 20 * DPI
-        UiCheckBox9.CheckBoxSize = 20 * DPI
-        UiComboBox8.ItemHeight = 30 * DPI
-        UiComboBox9.ItemHeight = 30 * DPI
-        UiCheckBox7.CheckBoxSize = 20 * DPI
-        UiComboBox11.ItemHeight = 30 * DPI
-        UiCheckBox10.CheckBoxSize = 20 * DPI
-        UiCheckBox12.CheckBoxSize = 20 * DPI
-        UiComboBox10.ItemHeight = 30 * DPI
-        UiCheckBox13.CheckBoxSize = 20 * DPI
-        UiComboBox13.ItemHeight = 30 * DPI
-        UiCheckBox15.CheckBoxSize = 20 * DPI
-        UiComboBox14.ItemHeight = 30 * DPI
-        UiCheckBox14.CheckBoxSize = 20 * DPI
-        UiComboBox15.ItemHeight = 30 * DPI
-        UiCheckBox16.CheckBoxSize = 20 * DPI
-        UiCheckBox20.CheckBoxSize = 20 * DPI
-        UiCheckBox29.CheckBoxSize = 20 * DPI
-        UiComboBox20.ItemHeight = 30 * DPI
-        UiCheckBox27.CheckBoxSize = 20 * DPI
-        UiCheckBox26.CheckBoxSize = 20 * DPI
-
+        Me.ImageList1.ImageSize = New Size(1, 30 * DPI)
     End Sub
 
-    Private Sub UiButton前往爱发电_Click(sender As Object, e As EventArgs) Handles UiButton前往爱发电.Click
-        Dim psi As New ProcessStartInfo With {.FileName = "https://afdian.com/a/1059Studio", .UseShellExecute = True}
-        Process.Start(psi)
-    End Sub
-
-    Private Sub UiButton哔哩哔哩_Click(sender As Object, e As EventArgs) Handles UiButton哔哩哔哩.Click
-        Dim psi As New ProcessStartInfo With {.FileName = "https://space.bilibili.com/319785096", .UseShellExecute = True}
-        Process.Start(psi)
-    End Sub
 End Class
